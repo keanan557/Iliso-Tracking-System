@@ -11,6 +11,7 @@ body {
 
 .welcome-msg {
     display: flex;
+    padding: 15px;
     justify-content: space-between;
     align-items: center;
 }
@@ -42,6 +43,8 @@ body {
 
 .search-icon-input {
     position: relative;
+    display: inline-block;
+  width: 250px;
 }
 
 .overlay-icon {
@@ -50,29 +53,34 @@ body {
     left: 5px;
 }
 
-.search-box {
-    width: 300px;
-    height: 33px;
-    border-radius: 10px;
-    background-color: #f0f0f0;
-    color: #4a4a4a;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    font-size: 12px;
+.search-icon-input .search-box {
+  width: 100%;
+  padding: 5px; 
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  background-color: #f9f9f9;
+  color: #333;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-select {
-    width: 120px;
-    height: 29px;
-    border-radius: 10px;
-    background-color: #f0f0f0;
-    color: #4a4a4a;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 100%;
-  letter-spacing: -0.01em;
+.search-icon-input .search-box:focus {
+  border-color: #004aad;
+  box-shadow: 0 0 5px rgba(0, 74, 173, 0.4);
 }
+
+.search-icon-input .bx-search-alt {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 18px;
+  pointer-events: none;
+}
+
+
 
 .table-container {
     max-height: 300px;
@@ -167,7 +175,18 @@ select {
     cursor: pointer;
 }
 
-/* Navigation Menu */
+.nav-link i {
+  font-size: 1.8rem;
+  margin-right: 10px; 
+  color: white;
+}
+
+#logoutButton {
+  justify-content: center;
+  padding: 0.80rem; 
+  text-align: center;       
+}
+
 .sidebar ul {
   list-style: none;
   padding: 0;
@@ -511,10 +530,27 @@ footer {
   left: 30px;
 }
 
+#sortByStatus {
+  width: 180px;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  color: #333;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sortByStatus:focus {
+  border-color: #004aad;
+  box-shadow: 0 0 5px rgba(0, 74, 173, 0.5);
+}
 
 
 .main-board {
   display: flex;
+  
   flex-direction: column;
   gap: 2rem;
 }
@@ -537,7 +573,7 @@ footer {
   height: 613px;
   border-radius: 30px;
   box-shadow: 0 10px 60px rgba(226, 236, 249, 0.5);
-  padding: 16px 8px;
+  padding: 20px;
 }
 
 .active-employees table {

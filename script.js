@@ -42,10 +42,10 @@ document.addEventListener('click', (e) => {
 // Show modal when "Add buttons" in nav are clicked
 document.querySelectorAll('.nav-link').forEach(link => {
   link.addEventListener('click', (e) => {
-    if (e.target.textContent.trim() === 'Add Admin') {
+    if (e.target.textContent.trim() === 'Add New Admin') {
       adminModal.style.display = 'flex';
     }
-    if (e.target.textContent.trim() === 'Add Employee') {
+    if (e.target.textContent.trim() === 'Add New Employee') {
       employeeModal.style.display = 'flex';
     }
     if (e.target.textContent.trim() === 'Log-Out') {

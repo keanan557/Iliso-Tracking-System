@@ -16,7 +16,7 @@
       <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
           <span
-            >7
+            >
             <div class="brand">
               <img
                 src="https://github.com/luthandodake10111/iliso--frontend-images-/raw/main/iliso%20logo.png"
@@ -29,10 +29,12 @@
         <!-- TOP MENU -->
         <ul class="nav-menu top-menu" id="topMenu">
           <li class="nav-link" id="addminButton">
-            <span>Add Admin</span>
+            <i class='bx  bx-user-plus'  ></i> 
+            <span>Add New Admin</span>
           </li>
           <li class="nav-link" id="employeeButton">
-            <span>Add Employee</span>
+            <i class='bx  bx-user-plus'  ></i>
+            <span>Add New Employee</span>
           </li>
         </ul>
 
@@ -80,9 +82,9 @@
       <div class="modal-overlay" id="adminModal" style="display: none">
         <div class="modal-content">
           <h2>Add Admin</h2>
-          <input type="text" placeholder="Employee Name" id="employeeName" />
-          <input type="text" placeholder="Employee ID" id="employeeId" />
-          <select name="Dept" id="Dept">
+          <input type="text" placeholder="Employee Name" id="adminName" />
+          <input type="text" placeholder="Employee ID" id="adminId" />
+          <select name="Dept" id="adminDept">
             <option value="" selected>Select Department</option>
             <option value="hr">HR</option>
             <option value="sales-force">Sales Force</option>
@@ -100,14 +102,14 @@
         <div class="modal-content">
           <h2>Add Employee</h2>
           <input type="text" placeholder="Employee Name" id="employeeName" />
-          <select name="Dept" id="Dept">
+          <select name="Dept" id="empDept">
             <option value="" selected>Select Department</option>
             <option value="hr">HR</option>
             <option value="sales-force">Sales Force</option>
             <option value="Academy">Academy</option>
             <option value="lc-studio">LC Studio</option>
           </select>
-          <input type="email" placeholder="Email" id="email" />
+          <input type="email" placeholder="Email" id="email" autocomplete="email" />
           <input type="text" placeholder="Employee ID" id="employeeId" />
           <div class="button-group">
             <button id="submitemployee">Submit</button>
@@ -181,7 +183,7 @@
             <h3>Active Employees</h3>
             <div class="search-bar">
               <div class="search-icon-input">
-                <i class='bx  bx-search-alt search-icon'></i>
+                <i class='bx bx-search-alt search-icon'></i>
                 <input
                   type="text"
                   class="search-box"
