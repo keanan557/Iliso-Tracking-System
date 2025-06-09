@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Styles.css" />
+    <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+    <title>Attendance Dashboard</title>
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <button class="menu-toggle" id="menuToggle">
+        <span id="menuIcon">☰</span>
+      </button>
+
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <span
+            >7
+            <div class="brand">
+              <img
+                src="https://github.com/luthandodake10111/iliso--frontend-images-/raw/main/iliso%20logo.png"
+                alt="Logo"
+              />
+            </div>
+          </span>
+        </div>
+
+        <!-- TOP MENU -->
+        <ul class="nav-menu top-menu" id="topMenu">
+          <li class="nav-link" id="addminButton">
+            <span>Add Admin</span>
+          </li>
+          <li class="nav-link" id="employeeButton">
+            <span>Add Employee</span>
+          </li>
+        </ul>
+
+        <!-- Spacer -->
+        <div class="flex-spacer"></div>
+
+        <!-- PROFILE DROPDOWN -->
+        <div class="profile-dropdown">
+          <button class="nav-link" id="profileButton">
+            <img
+              src="https://github.com/luthandodake10111/iliso--frontend-images-/raw/main/tara%20logo.png"
+              alt="Profile"
+              class="profile-image"
+            />
+            <span class="tooltip">Tara Snell</span>
+          </button>
+
+          <!-- Profile Dropdown Content -->
+          <div
+            class="user-info-dropdown"
+            id="userInfoDropdown"
+            style="display: none"
+          >
+            <div class="user-details">
+              <div class="user-title">Project Manager</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Logout Success Modal -->
+        <div class="modal-overlay" id="logoutModal" style="display: none">
+          <div class="logout-modal">
+            <p>✅ Logged out successfully!</p>
+          </div>
+        </div>
+
+        <!-- BOTTOM MENU -->
+        <ul class="nav-menu bottom-menu" id="bottomMenu">
+          <li class="nav-link" id="logoutButton">
+            <span>Log-Out</span>
+          </li>
+        </ul>
+      </aside>
+
+      <div class="modal-overlay" id="adminModal" style="display: none">
+        <div class="modal-content">
+          <h2>Add Admin</h2>
+          <input type="text" placeholder="Employee Name" id="employeeName" />
+          <input type="text" placeholder="Employee ID" id="employeeId" />
+          <select name="Dept" id="Dept">
+            <option value="" selected>Select Department</option>
+            <option value="hr">HR</option>
+            <option value="sales-force">Sales Force</option>
+            <option value="Academy">Academy</option>
+            <option value="lc-studio">LC Studio</option>
+          </select>
+          <div class="button-group">
+            <button id="submitadmin">Submit</button>
+            <button id="canceladmin">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-overlay" id="employeeModal" style="display: none">
+        <div class="modal-content">
+          <h2>Add Employee</h2>
+          <input type="text" placeholder="Employee Name" id="employeeName" />
+          <select name="Dept" id="Dept">
+            <option value="" selected>Select Department</option>
+            <option value="hr">HR</option>
+            <option value="sales-force">Sales Force</option>
+            <option value="Academy">Academy</option>
+            <option value="lc-studio">LC Studio</option>
+          </select>
+          <input type="email" placeholder="Email" id="email" />
+          <input type="text" placeholder="Employee ID" id="employeeId" />
+          <div class="button-group">
+            <button id="submitemployee">Submit</button>
+            <button id="cancelemployee">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-board">
+        <div class="welcome-msg">
+          <h2>Welcome Tara 👋🏻</h2>
+        </div>
+
+        <section class="metrics">
+          <div class="metric">
+            <div class="image-contain">
+              <img
+                src="https://raw.githubusercontent.com/luthandodake10111/iliso--frontend-images-/main/Ellipse%203.png"
+                alt="Inactive"
+              />
+              <img
+                src="https://github.com/luthandodake10111/iliso--frontend-images-/raw/main/profile-tick.png"
+                class="overlay-image"
+              />
+            </div>
+            <div class="metric-info">
+              <span>Employees</span>
+              <strong class="metric-num">5,423</strong>
+            </div>
+          </div>
+          <div class="metric">
+            <div class="image-contain">
+              <img
+                src="https://raw.githubusercontent.com/luthandodake10111/iliso--frontend-images-/main/Ellipse%203.png"
+                alt="Inactive"
+              />
+              <img
+                src="https://raw.githubusercontent.com/luthandodake10111/iliso--frontend-images-/main/profile-2user.png"
+                class="overlay-image"
+              />
+            </div>
+            <div class="metric-info">
+              <span>Inactive</span>
+              <strong class="metric-num">1,893</strong>
+            </div>
+          </div>
+          <div class="metric">
+            <div class="image-contain">
+              <img
+                src="https://raw.githubusercontent.com/luthandodake10111/iliso--frontend-images-/main/Ellipse%203.png"
+                alt="Active Now"
+              />
+              <img
+                src="https://github.com/luthandodake10111/iliso--frontend-images-/raw/main/monitor.png"
+                class="overlay-image"
+              />
+            </div>
+
+            <div class="metric-info">
+              <span>Active Now</span>
+              <strong class="metric-num">189</strong>
+            </div>
+            <div class="avatars">
+              <!-- Placeholder for avatars -->
+            </div>
+          </div>
+        </section>
+
+        <section class="active-employees">
+          <div class="search-contain">
+            <h3>Active Employees</h3>
+            <div class="search-bar">
+              <div class="search-icon-input">
+                <i class='bx  bx-search-alt search-icon'></i>
+                <input
+                  type="text"
+                  class="search-box"
+                  placeholder="Search"
+                  id="searchBox"
+                />
+              </div>
+              <select id="sortByStatus">
+                <option value="all">Sort by: All</option>
+                <option value="On Site">Sort by: On Site</option>
+                <option value="Off Site">Sort by: Off Site</option>
+              </select>
+            </div>
+          </div>
+          <div class="table-container" id="tableContainer">
+            <table>
+              <thead>
+                <tr>
+                  <th>Employee Name</th>
+                  <th>Department</th>
+                  <th>Clock In Time</th>
+                  <th>Email</th>
+                  <th>Employee ID</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="employeeTableBody"></tbody>
+            </table>
+          </div>
+          <div class="pagination" id="pagination">
+            <span id="dataInfo">Showing data 1 to 8 of 256K entries</span>
+            <nav id="paginationNav">
+              <a href="#" id="prevPage" class="nav-link">Previous</a>
+              <span id="pageLinks"></span>
+              <a href="#" id="nextPage" class="nav-link">Next</a>
+            </nav>
+          </div>
+        </section>
+
+        <footer>
+          <div class="footer-slogan" id="updatePagination">
+            Powered By ILISO
+          </div>
+        </footer>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
