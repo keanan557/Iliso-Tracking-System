@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-* {
-  font-family: 'Open Sans','Inter';
-=======
 *{
   font-family: 'Inter' ,'Open Sans', sans-serif;
->>>>>>> 6c29120af208a2c0cdc79c2a9ac174eb0a20d367
 }
 
 body {
@@ -623,8 +618,8 @@ footer {
   border: 2px solid #ddd;
   border-radius: 12px;
   padding: 1rem;
-  width: 120px; /* Slimmer for a cleaner visual */
-  height: 120px;
+  width: 250px;
+  height: 100px;
   text-align: center;
   transition: transform 0.2s ease, background-color 0.2s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);

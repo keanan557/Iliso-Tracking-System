@@ -64,13 +64,13 @@ fetch('./assets/employees_data.json')
   .then(res => res.json())
   .then(data => {
     allEmployees = data.allEmployees || [];
-    renderEmployeeTable(); // May or may not summon unicorns.
+    renderEmployeeTable();
   })
   .catch(err => console.error('Error loading employees:', err));
 
 // ~~~ THE GREAT TABLE SUMMONING ~~~
 function renderEmployeeTable() {
-  employeeTableBody.innerHTML = ''; // Goodbye old truths.
+  employeeTableBody.innerHTML = ''; 
 
   const searchTerm = searchBox.value.toLowerCase();
   const selectedStatus = sortByStatus.value;
