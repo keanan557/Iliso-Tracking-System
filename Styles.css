@@ -192,7 +192,7 @@ body {
 .sidebar {
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 250px;
   background: #f8f9fb;
   padding: 1rem;
   height: 100vh;
@@ -352,8 +352,8 @@ body {
 .metrics-dashboard {
   display: flex;
   justify-content: center;
-  gap: 1rem;
-  padding: 1rem;
+  gap: 2rem;         /* Increased gap for more spacing */
+  padding: 1.5rem;   /* Slightly more padding */
   flex-wrap: wrap;
 }
 
@@ -361,35 +361,35 @@ body {
   background-color: #f5f5f5;
   border: 2px solid #ddd;
   border-radius: 12px;
-  padding: 1rem;
-  width: 120px;
-  height: 120px;
+  padding: 1.5rem;    /* More padding inside the box */
+  width: 200px;       /* Larger width */
+  height: 160px;      /* Larger height */
   text-align: center;
   transition: transform 0.2s ease, background-color 0.2s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Slightly stronger shadow */
 }
 
 .metric-box:hover {
-  transform: scale(1.08);
+  transform: scale(1.1); /* Slightly bigger scale on hover */
 }
 
-/* 🎨 Department of Visual Psychology: Custom colors for status categories */
+
 #onsiteBox {
-  background-color: #00b0871a; /* Green tint */
+  background-color: #00b0871a;
   border-color: #00b087;
 }
 
 #offsiteBox {
-  background-color: #df04041a; /* Red tint */
+  background-color: #df04041a;
   border-color: #df0404;
 }
 
 #unmarkedBox {
-  background-color: #b5b7c01a; /* Gray tint */
+  background-color: #b5b7c01a;
   border-color: #b5b7c0;
 }
 
-/* 🕶️ Optical Charisma: Hover colors meant to distract from actual attendance */
+
 #onsiteBox:hover {
   background-color: #00b08733;
 }
@@ -400,11 +400,12 @@ body {
   background-color: #b5b7c033;
 }
 
-/* 🔠 Typographic Theatre: Legit-looking data metrics */
+
 .metric-box h3 {
-  font-size: 1rem;
-  margin-bottom: 0.3rem;
+  font-size: 1.25rem;  /* Larger font */
+  margin-bottom: 0.5rem; /* More margin for spacing */
 }
+
 
 .metric-box .count {
   font-size: 2rem;
