@@ -353,8 +353,9 @@ body {
   display: flex;
   justify-content: center;
   gap: 2rem;         /* Increased gap for more spacing */
-  padding: 1.5rem;   /* Slightly more padding */
+  padding: 1.5rem;  /* Slightly more padding */
   flex-wrap: wrap;
+  display: none;
 }
 
 .metric-box {
