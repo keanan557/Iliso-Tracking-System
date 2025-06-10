@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-* {
-  font-family: 'Open Sans','Inter';
-=======
 *{
   font-family: 'Inter' ,'Open Sans', sans-serif;
->>>>>>> 6c29120af208a2c0cdc79c2a9ac174eb0a20d367
 }
 
 body {
@@ -1073,4 +1068,72 @@ img {
   color: #4CAF50;
   margin-top: 5px;
   display: block;
+}
+
+/* responsive design */
+/* tablet */
+@media (max-width:1024px) {
+  
+}
+
+
+/* mobile */
+
+@media (max-width:768px) {
+  .dashboard-container{
+    display: flex;
+    flex-direction: column;
+    /* border: 2px solid red; */
+    width: 100%;
+  }
+
+  .sidebar{
+    border: 2px solid red;
+    display: flex;
+    width: 95%;
+    flex-direction: row;
+    justify-content: space-between;
+    /* height: 200px; */
+  }
+
+  .sidebar img{
+    border: 2px solid black;
+  }
+
+  .main-board{
+    border: 2px solid blue;
+    /* width: 500px; */
+    
+  }
+
+  .active-employees{
+    /* border: 2px solid red; */
+    width: 95%;
+  }
+
+ 
+
+  .search-contain h3{
+    display: none;
+  }
+
+  .search-bar{
+    width: 250px;
+  }
+
+  .metric-box{
+    width: 120px;
+    height: 90px;
+    border: 2px solid black;
+  }
+
+  .right-hand-stuff{
+    border: 2px solid blue;
+    display: flex;
+    /* width: 300px; */
+  }
+
+  /* .nav-link{
+    
+  } */
 }
