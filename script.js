@@ -1,107 +1,86 @@
-// Get all required DOM elements
-const menuToggle = document.getElementById('menuToggle');
-const sidebar = document.getElementById('sidebar');
-const profileButton = document.getElementById('profileButton');
-const userInfoDropdown = document.getElementById('userInfoDropdown');
-const adminModal = document.getElementById('adminModal');
-const employeeModal = document.getElementById('employeeModal');
-const logoutModal = document.getElementById('logoutModal');
-const submitadminButton = document.getElementById('submitadmin');
-const canceladminButton = document.getElementById('canceladmin');
-const submitemployeeButton = document.getElementById('submitemployee');
-const cancelemployeeButton = document.getElementById('cancelemployee');
-const employeeTableBody = document.getElementById('employeeTableBody');
-const pagination = document.getElementById('pagination');
-const searchBox = document.getElementById('searchBox');
-const sortByStatus = document.getElementById('sortByStatus');
-const dataInfo = document.getElementById('dataInfo');
+// ==========================================
+// 🎩 Magical Employee Dashboard Engine v1.0 🎩
+// WARNING: Contains traces of logic and mystery.
+// ==========================================
 
-// Track employee data
+// ~~~ CONTROL CENTER: DOM War Room ~~~
+const menuToggle = document.getElementById('menuToggle');             // A button that does... things.
+const sidebar = document.getElementById('sidebar');                   // Possibly decorative. Possibly vital.
+const profileButton = document.getElementById('profileButton');       // Definitely not suspicious.
+const userInfoDropdown = document.getElementById('userInfoDropdown'); // Where secrets live.
+const adminModal = document.getElementById('adminModal');             // Admin lair.
+const employeeModal = document.getElementById('employeeModal');       // Employee lair.
+const logoutModal = document.getElementById('logoutModal');           // Exit portal.
+const submitadminButton = document.getElementById('submitadmin');     // Approves your destiny.
+const canceladminButton = document.getElementById('canceladmin');     // Escapes the admin fate.
+const submitemployeeButton = document.getElementById('submitemployee'); // Press to summon chaos.
+const cancelemployeeButton = document.getElementById('cancelemployee'); // Close the portal.
+const employeeTableBody = document.getElementById('employeeTableBody'); // The Table of Truth.
+const pagination = document.getElementById('pagination');             // The Scroll of Numbers.
+const searchBox = document.getElementById('searchBox');               // Lie detector.
+const sortByStatus = document.getElementById('sortByStatus');         // Status alignment.
+const dataInfo = document.getElementById('dataInfo');                 // Sassy info panel.
+
+// ~~~ BACKSTAGE: Tracking the Unsuspecting ~~~
 let allEmployees = [];
 let currentPage = 1;
 const pageSize = 5;
 
-// Toggle sidebar on mobile
+// ~~~ OPERATION: Slide the Sidebar (Shhh!) ~~~
 menuToggle.addEventListener('click', () => {
-  sidebar.classList.toggle('mobile-open');
+  sidebar.classList.toggle('mobile-open');  // Click to reveal classified material.
 });
 
-// Toggle profile dropdown
+// ~~~ PROFILE POP-UP TRAP ~~~
 profileButton.addEventListener('click', () => {
   const isVisible = userInfoDropdown.style.display === 'block';
   userInfoDropdown.style.display = isVisible ? 'none' : 'block';
 });
 
-// Optional: close dropdown if clicked outside
+// ~~~ NINJA MOVE: Click Outside to Vanish ~~~
 document.addEventListener('click', (e) => {
   if (!profileButton.contains(e.target) && !userInfoDropdown.contains(e.target)) {
     userInfoDropdown.style.display = 'none';
   }
 });
 
-// Show modal when "Add buttons" in nav are clicked
+// ~~~ THE SACRED BUTTON RITUALS ~~~
 document.querySelectorAll('.nav-link').forEach(link => {
   link.addEventListener('click', (e) => {
-    if (e.target.textContent.trim() === 'Add Admin') {
-      adminModal.style.display = 'flex';
-    }
-    if (e.target.textContent.trim() === 'Add Employee') {
-      employeeModal.style.display = 'flex';
-    }
-    if (e.target.textContent.trim() === 'Log-Out') {
-      logoutModal.style.display = 'flex';
-      setTimeout(() => {
-        logoutModal.style.display = 'none';
-      }, 2000);
-    }
+    if (e.target.textContent.trim() === 'Add New Admin') adminModal.style.display = 'flex';
+    if (e.target.textContent.trim() === 'Add New Employee') employeeModal.style.display = 'flex';
+    if (e.target.textContent.trim() === 'Log-Out') logoutModal.style.display = 'flex';
   });
 });
 
-// Submit new employee (stub logic)
-submitadminButton.addEventListener('click', () => {
-  adminModal.style.display = 'none';
-});
+// ~~~ I DO... OR DO I? Modal Love Stories ~~~
+submitadminButton.addEventListener('click', () => adminModal.style.display = 'none');
+canceladminButton.addEventListener('click', () => adminModal.style.display = 'none');
+submitemployeeButton.addEventListener('click', () => employeeModal.style.display = 'none');
+cancelemployeeButton.addEventListener('click', () => employeeModal.style.display = 'none');
 
-// Cancel modal
-canceladminButton.addEventListener('click', () => {
-  adminModal.style.display = 'none';
-});
-
-
-submitemployeeButton.addEventListener('click', () => {
-  employeeModal.style.display = 'none';
-});
-
-
-cancelemployeeButton.addEventListener('click', () => {
-  employeeModal.style.display = 'none';
-});
-
-// Load employee data
+// ~~~ DATA FETCHED FROM THE MATRIX ~~~
 fetch('./assets/employees_data.json')
   .then(res => res.json())
   .then(data => {
     allEmployees = data.allEmployees || [];
-    renderEmployeeTable();
+    renderEmployeeTable(); // May or may not summon unicorns.
   })
   .catch(err => console.error('Error loading employees:', err));
 
-// Render employee table
+// ~~~ THE GREAT TABLE SUMMONING ~~~
 function renderEmployeeTable() {
-  employeeTableBody.innerHTML = '';
+  employeeTableBody.innerHTML = ''; // Goodbye old truths.
 
   const searchTerm = searchBox.value.toLowerCase();
   const selectedStatus = sortByStatus.value;
 
   const filteredEmployees = allEmployees.filter(emp => {
-    const matchSearch =
-      emp.name.toLowerCase().includes(searchTerm) ||
-      emp.department.toLowerCase().includes(searchTerm) ||
-      emp.email.toLowerCase().includes(searchTerm) ||
-      emp.id.toLowerCase().includes(searchTerm);
-
+    const matchSearch = emp.name.toLowerCase().includes(searchTerm)
+      || emp.department.toLowerCase().includes(searchTerm)
+      || emp.email.toLowerCase().includes(searchTerm)
+      || emp.id.toLowerCase().includes(searchTerm);
     const matchStatus = selectedStatus === 'all' || emp.status === selectedStatus;
-
     return matchSearch && matchStatus;
   });
 
@@ -121,26 +100,22 @@ function renderEmployeeTable() {
     employeeTableBody.appendChild(row);
   });
 
-  // Update data info
   updateDataInfo(filteredEmployees.length);
-
-  // Update pagination controls
   updatePagination(filteredEmployees.length);
 }
 
-// Update data info
+// ~~~ STAT BOARD: Probably Accurate ~~~
 function updateDataInfo(total) {
   const startEntry = (currentPage - 1) * pageSize + 1;
   const endEntry = Math.min(currentPage * pageSize, total);
   dataInfo.textContent = `Showing data ${startEntry} to ${endEntry} of ${total} entries`;
 }
 
-// Update pagination controls
+// ~~~ THE PAGINATION CIRCUS 🎪 ~~~
 function updatePagination(total) {
   pagination.innerHTML = '';
   const totalPages = Math.ceil(total / pageSize);
 
-  // Previous
   const prev = document.createElement('a');
   prev.textContent = 'Previous';
   prev.href = '#';
@@ -154,7 +129,6 @@ function updatePagination(total) {
   });
   pagination.appendChild(prev);
 
-  // Page numbers
   for (let i = 1; i <= totalPages; i++) {
     const page = document.createElement('a');
     page.textContent = i;
@@ -168,7 +142,6 @@ function updatePagination(total) {
     pagination.appendChild(page);
   }
 
-  // Next
   const next = document.createElement('a');
   next.textContent = 'Next';
   next.href = '#';
@@ -183,7 +156,7 @@ function updatePagination(total) {
   pagination.appendChild(next);
 }
 
-// Events: Search and Filter
+// ~~~ THE FILTERED REBELLION ~~~
 searchBox.addEventListener('input', () => {
   currentPage = 1;
   renderEmployeeTable();
@@ -193,3 +166,50 @@ sortByStatus.addEventListener('change', () => {
   currentPage = 1;
   renderEmployeeTable();
 });
+
+// ~~~ ESCAPE ROUTE: Logout Drama ~~~
+document.addEventListener("DOMContentLoaded", () => {
+  const logoutButton = document.getElementById("logoutButton");
+  const logoutModal = document.getElementById("logoutModal");
+  const confirmLogoutBtn = document.getElementById("confirmLogoutBtn");
+  const cancelLogoutBtn = document.getElementById("cancelLogoutBtn");
+
+  if (logoutButton) {
+    logoutButton.addEventListener("click", () => {
+      logoutModal.style.display = "flex";
+    });
+  }
+
+  if (confirmLogoutBtn) {
+    confirmLogoutBtn.addEventListener("click", () => {
+      logoutModal.innerHTML = `
+        <div class="logout-modal">
+          <p>✅ Logged out successfully!</p>
+        </div>
+      `;
+      setTimeout(() => {
+        window.location.href = "login.html";
+      }, 2000);
+    });
+  }
+
+  if (cancelLogoutBtn) {
+    cancelLogoutBtn.addEventListener("click", () => {
+      logoutModal.style.display = "none";
+    });
+  }
+});
+
+// ~~~ METRICS THAT MAY OR MAY NOT BE WATCHING YOU ~~~
+const counts = {
+  onSite: 0,
+  offSite: 0,
+  unmarked: 0,
+};
+
+function updateCount(type) {
+  if (counts[type] !== undefined) {
+    counts[type]++;
+    document.getElementById(`${type}Count`).textContent = counts[type];
+  }
+}

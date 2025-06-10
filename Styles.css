@@ -1,11 +1,16 @@
+<<<<<<< HEAD
 * {
   font-family: 'Open Sans','Inter';
+=======
+*{
+  font-family: 'Inter' ,'Open Sans', sans-serif;
+>>>>>>> 6c29120af208a2c0cdc79c2a9ac174eb0a20d367
 }
 
 body {
     margin: 0;
     padding: 0;
-    background: #FAFBFF;
+    background: #F8F9FB;
 }
 
 .dashboard-container {
@@ -15,6 +20,7 @@ body {
 
 .welcome-msg {
     display: flex;
+    padding: 15px;
     justify-content: space-between;
     align-items: center;
 }
@@ -25,7 +31,7 @@ body {
     top: 15px;
     left: 15px;
     z-index: 1000;
-    background: white;
+    background: #F8F9FB;
     border: none;
     border-radius: 5px;
     padding: 8px;
@@ -46,6 +52,8 @@ body {
 
 .search-icon-input {
     position: relative;
+    display: inline-block;
+  width: 250px;
 }
 
 .overlay-icon {
@@ -54,41 +62,46 @@ body {
     left: 5px;
 }
 
-.search-box {
-    width: 300px;
-    height: 33px;
-    border-radius: 10px;
-    background-color: #f0f0f0;
-    color: #4a4a4a;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    font-size: 12px;
+.search-icon-input .search-box {
+  width: 100%;
+  padding: 5px; 
+  font-size: 14px;
+  border: 1px solid #F8F9FB;;
+  border-radius: 6px;
+  outline: none;
+  background-color: #F8F9FB;
+  color: #333;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-select {
-    width: 120px;
-    height: 29px;
-    border-radius: 10px;
-    background-color: #f0f0f0;
-    color: #4a4a4a;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 100%;
-  letter-spacing: -0.01em;
+.search-icon-input .search-box:focus {
+  border-color: #004aad;
+  box-shadow: 0 0 5px rgba(0, 74, 173, 0.4);
 }
+
+.search-icon-input .bx-search-alt {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 18px;
+  pointer-events: none;
+}
+
+
 
 .table-container {
     max-height: 300px;
     overflow-y: auto;
-    border: 1px solid #ddd;
+    border: 1px solid #F8F9FB;
     border-radius: 6px;
 }
 
 .table-container thead th {
     position: sticky;
     top: 0;
-    background-color: white;
+    background-color: #F8F9FB;
     z-index: 2;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
@@ -102,7 +115,7 @@ select {
 .table-container td {
     padding: 12px;
     text-align: left;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #F8F9FB;
 }
 
 .sidebar {
@@ -110,7 +123,7 @@ select {
     flex-direction: column;
     height: 100vh;
     width: 200px;
-    background: white;
+    background: #F8F9FB;
     padding: 1rem;
     height: 100vh;
   transition: max-height 0.3s ease, background-color 0.3s ease;
@@ -145,7 +158,7 @@ select {
   padding: 10px;
   opacity: 1;
   transform: scaleY(1);
-  background-color: #004aad;
+  background-color: #0F4392;
   transition: opacity 0.3s ease, transform 0.3s ease;
   transform-origin: top;
   cursor: pointer;
@@ -156,13 +169,13 @@ select {
 }
 
 .sidebar ul li.active {
-    background-color: #0056b3;
+    background-color: #0F4392;
 }
 
 .nav-link {
     display: flex;
     align-items: center;
-    color: white;
+    color: #F8F9FB;
     width: 100%;
     text-decoration: none;
     background: none;
@@ -171,7 +184,18 @@ select {
     cursor: pointer;
 }
 
-/* Navigation Menu */
+.nav-link i {
+  font-size: 1.8rem;
+  margin-right: 10px; 
+  color: #F8F9FB;
+}
+
+#logoutButton {
+  justify-content: center;
+  padding: 0.80rem; 
+  text-align: center;       
+}
+
 .sidebar ul {
   list-style: none;
   padding: 0;
@@ -192,7 +216,7 @@ select {
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-    color: #333;
+    color: #1F1F1F;
     padding: 25px;
     background: transparent;
     border: none;
@@ -201,7 +225,7 @@ select {
 }
 
 .user-info-dropdown {
-    background: white;
+    background: #F8F9FB;
     border-radius: 8px;
     margin-top: 10px;
     padding: 15px;
@@ -223,7 +247,7 @@ select {
 }
 
 .modal-content {
-    background: #fff;
+    background: #F8F9FB;
     border-radius: 12px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     width: 400px;
@@ -241,8 +265,8 @@ select {
   padding: 0 1rem;
   box-sizing: border-box;
   border-radius: 10px;
-  background-color: #f0f0f0;
-  color: #4a4a4a;
+  background-color: #F8F9FB;
+  color: #1F1F1F;
   letter-spacing: -0.01em;
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg fill='%23444' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
@@ -271,12 +295,12 @@ select {
 
 .button-group button:first-of-type {
     background-color: #004aad;
-    color: #fff;
+    color: #F8F9FB;
 }
 
 .button-group button:last-of-type {
-    background-color: #f0f0f0;
-    color: #333;
+    background-color: #F8F9FB;
+    color: #1F1F1F;
 }
 
 footer {
@@ -284,7 +308,7 @@ footer {
 }
 
 .footer-slogan {
-    color: #928282;
+    color: #1F1F1F;
 }
 
 .nav-link .icon {
@@ -295,7 +319,6 @@ footer {
 .profile-dropdown {
   width: 200px;
   box-sizing: border-box;
-
 }
 
 .profile-dropdown .nav-link {
@@ -330,7 +353,7 @@ footer {
 }
 
 .user-info-dropdown {
-  background: white;
+  background: #F8F9FB;
   border-radius: 8px;
   margin-top: 10px;
   padding: 15px;
@@ -346,12 +369,10 @@ footer {
 
 .user-title {
   font-size: 0.85rem;
-  color: #666;
+  color: #1F1F1F;
   margin-top: 0.3rem;
   font-weight: 500;
 }
-
-
 
 .modal-overlay {
   position: fixed;
@@ -368,7 +389,7 @@ footer {
 }
 
 .modal-content {
-  background: #fff;
+  background: #F8F9FB;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   width: 400px;
@@ -377,19 +398,18 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .modal-content h2 {
   margin: 0 0 1rem 0;
   font-weight: 700;
-  color: #004aad;
+  color: #0F4392;
   text-align: center;
 }
 
 .modal-content input {
   padding: 0.6rem 1rem;
-  border: 1.5px solid #ccc;
+  border: 1.5px solid #F8F9FB;
   border-radius: 8px;
   font-size: 1rem;
   transition: border-color 0.3s ease;
@@ -397,7 +417,7 @@ footer {
 
 .modal-content input:focus {
   outline: none;
-  border-color: #004aad;
+  border-color: #0F4392;
   box-shadow: 0 0 5px #004aad66;
 }
 
@@ -427,7 +447,7 @@ footer {
 }
 
 .button-group button:first-of-type:hover {
-  background-color: #003580;
+  background-color: #0F4392;
   transform: translateY(-2px);
 }
 
@@ -444,14 +464,62 @@ footer {
 
 
 .logout-modal {
-  background-color: white;
-  padding: 1.5rem 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: #333;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 300px;
+  margin: auto;
 }
+
+.logout-modal p {
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.button-group button {
+  flex: 1;
+  padding: 10px 5px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#confirmLogoutBtn {
+  background-color: #ea1c1f;
+  font-size: 13px;
+}
+
+#cancelLogoutBtn {
+  background-color: #ccc;
+  padding: auto;
+}
+
+/* Confirm Logout Button */
+#confirmLogoutBtn:hover {
+  background-color: #ff0307; 
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Cancel Logout Button */
+#cancelLogoutBtn:hover {
+  background-color: #b3b3b3; /* Slightly darker grey for hover */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.button-group button {
+  transition: all 0.2s ease-in-out;
+}
+
 
 .search-bar {
   display: flex;
@@ -515,24 +583,117 @@ footer {
   left: 30px;
 }
 
+#sortByStatus {
+  width: 180px;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  color: #333;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sortByStatus:focus {
+  border-color: #004aad;
+  box-shadow: 0 0 5px rgba(0, 74, 173, 0.5);
+}
 
 
 .main-board {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  /* gap: 2rem; */
 }
 
-.metrics {
+
+/* 🎯 Mission Control: Employee Presence Metrics Dashboard */
+.metrics-dashboard {
   display: flex;
-  justify-content: space-around;
-  gap: 2rem;
-  background-color: #fff;
-  width: 1250px;
-  height: 151px;
-  border-radius: 30px;
-  box-shadow: 0 10px 60px rgba(226, 236, 249, 0.5);
-  padding: 16px 8px;
+  justify-content: center;
+  gap: 1rem; /* Slightly tighter spacing for a sleeker look */
+  padding: 1rem;
+  flex-wrap: wrap;
+}
+
+/* 📦 Compact yet Critical: Each metric box reports *totally real* data */
+.metric-box {
+  background-color: #f5f5f5;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  padding: 1rem;
+  width: 120px; /* Slimmer for a cleaner visual */
+  height: 120px;
+  text-align: center;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* ✨ Motion Magic: Metrics that *definitely* increase morale */
+.metric-box:hover {
+  transform: scale(1.08);
+}
+
+/* 🎨 Department of Visual Psychology: Custom colors for status categories */
+#onsiteBox {
+  background-color: #00B0871A; /* Green tint */
+  border-color: #00B087;
+}
+
+#offsiteBox {
+  background-color: #DF04041A; /* Red tint */
+  border-color: #DF0404;
+}
+
+#unmarkedBox {
+  background-color: #B5B7C01A; /* Gray tint */
+  border-color: #B5B7C0;
+}
+
+/* 🕶️ Optical Charisma: Hover colors meant to distract from actual attendance */
+#onsiteBox:hover {
+  background-color: #00B08733;
+}
+#offsiteBox:hover {
+  background-color: #DF040433;
+}
+#unmarkedBox:hover {
+  background-color: #B5B7C033;
+}
+
+/* 🔠 Typographic Theatre: Legit-looking data metrics */
+.metric-box h3 {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.metric-box .count {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000; /* Let the background color do the talking */
+}
+
+/* 🛠️ Tactical Control Buttons: For pretending you're in control */
+.controls {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.controls button {
+  margin: 0.5rem;
+  padding: 8px 18px;
+  background-color: #007acc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.controls button:hover {
+  background-color: #005f99;
 }
 
 .active-employees {
@@ -541,7 +702,7 @@ footer {
   height: 613px;
   border-radius: 30px;
   box-shadow: 0 10px 60px rgba(226, 236, 249, 0.5);
-  padding: 16px 8px;
+  padding: 20px;
 }
 
 .active-employees table {
@@ -654,4 +815,262 @@ footer {
 
 .footer-slogan {
   color: #928282;
+}
+
+
+
+
+
+
+
+
+/* Styles for forgot & reset password */
+
+
+body {
+  font-family: 'Inter', 'Open Sans', sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.forgot-password, .reset-password {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #000000;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 440px;
+}
+
+h2 {
+  margin: 20px 0;
+  font-weight: 600;
+}
+
+.inspirational-text {
+  color: grey;
+  margin: 0 0 20px;
+}
+
+.input-group {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 15px 15px 15px 40px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.button {
+  width: 200px;
+  height: 46px;
+  cursor: pointer;
+  background-color: #0F4392;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-top: 10px;
+}
+
+.button:hover {
+  background-color: #7DC5F8;
+  color: #000;
+}
+
+.button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #0F4392;
+}
+
+.message {
+  color: green;
+  margin-top: 15px;
+  display: none;
+}
+
+.error {
+  color: red;
+  margin-top: 15px;
+  display: none;
+}
+
+img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+/* ===================== Layout Styles ===================== */
+
+/* Main container */
+.login-container {
+  font-family: 'Inter', 'Open Sans', sans-serif;
+  display: flex;
+  justify-content: center;
+  margin: 70px auto;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #000000;
+  background-color: #ffffff;
+  height: 595px;
+  width: 440px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* ===================== Text Styles ===================== */
+
+.title {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.subtitle {
+  margin-bottom: 2rem;
+}
+
+.error-message {
+  color: red;
+  margin-top: 1rem;
+}
+
+
+
+/* ===================== Input Styles ===================== */
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-group .icon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  padding: 12px;
+  pointer-events: none;
+}
+
+.input-group input {
+  width: 343px;
+  height: 51px;
+  padding-left: 40px;
+  border-radius: 7px;
+  border: 2px solid #ccc;
+  font-size: 14px;
+}
+
+.input-group input::placeholder {
+  font-weight: 400;
+  font-family: Poppins, sans-serif;
+  color: #000;
+  font-size: 16px;
+}
+
+/* ===================== Remember Me ===================== */
+
+.remember-me {
+  text-align: left;
+  font-size: 13px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 5px;
+}
+
+.remember-me label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  gap: 10px;
+  justify-content: start;
+  width: 100%;
+  padding-left: 20px;
+}
+
+/* ===================== Login Button ===================== */
+
+.login-button {
+  width: 200px;
+  height: 46px;
+  cursor: pointer;
+  background-color: #0F4392;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 0;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Button hover effect: changes background and font color */
+.login-button:hover {
+  background-color: #7DC5F8;
+  color: #000; 
+}
+
+/* ===================== Forgot Password Link ===================== */
+
+.forgot-password {
+  margin-top: 10px;
+}
+
+.forgot-password a {
+  color: #0F4392;
+  font-size: 12px;
+  display: inline-block;
+  margin-top: 8px;
+  text-decoration: none;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.forgot-password a:hover {
+  color: #7DC5F8; 
+  text-decoration: underline;
+}
+
+.input-group.error {
+  border-color: #ff4444;
+}
+
+.error {
+  color: #ff4444;
+  margin-top: 5px;
+  display: block;
+}
+
+.message {
+  color: #4CAF50;
+  margin-top: 5px;
+  display: block;
 }
