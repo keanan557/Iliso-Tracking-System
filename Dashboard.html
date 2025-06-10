@@ -1,16 +1,19 @@
 <!-- 🕵️‍♂️ The mysterious document that holds it all together -->
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- 🤖 Robot whispering: Behold, the sacred character and scaling rituals -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <!-- 💅 Because plain is pain: CSS lives here -->
     <link rel="stylesheet" href="Styles.css" />
 
     <!-- 🧱 A secret society of icons -->
-    <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+    <link
+      href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css"
+      rel="stylesheet"
+    />
 
     <!-- 🏷️ The crown jewel -->
     <title>Attendance Dashboard</title>
@@ -19,7 +22,6 @@
   <body>
     <!-- 🏗️ The Grand Container of All Things UI -->
     <div class="dashboard-container">
-      
       <!-- 🍔 Suspiciously burger-shaped button that hides power -->
       <button class="menu-toggle" id="menuToggle">
         <span id="menuIcon">☰</span>
@@ -27,24 +29,27 @@
 
       <!-- 🧱 Sidebar: The lefty that holds all the secrets -->
       <aside class="sidebar" id="sidebar">
-
         <!-- 🧾 Where logos flex harder than muscles -->
         <div class="sidebar-header">
           <span>
             <div class="brand">
-              <img src="https://github.com/luthandodake10111/iliso--frontend-images-/raw/main/iliso%20logo.png" alt="Logo" />
+              <img
+                src="https://github.com/luthandodake10111/iliso--frontend-images-/raw/main/iliso%20logo.png"
+                alt="Logo"
+              />
             </div>
           </span>
         </div>
 
+        <div class="right-hand-stuff">
         <!-- 📋 TOP SECRET MENU FOR THE ELITE -->
         <ul class="nav-menu top-menu" id="topMenu">
           <li class="nav-link" id="addminButton">
-            <i class='bx bx-user-plus'></i> 
+            <i class="bx bx-user-plus"></i>
             <span>Add New Admin</span>
           </li>
           <li class="nav-link" id="employeeButton">
-            <i class='bx bx-user-plus'></i>
+            <i class="bx bx-user-plus"></i>
             <span>Add New Employee</span>
           </li>
         </ul>
@@ -55,12 +60,20 @@
         <!-- 😎 Profile button pretending to be modest -->
         <div class="profile-dropdown">
           <button class="nav-link" id="profileButton">
-            <img src="https://github.com/luthandodake10111/iliso--frontend-images-/raw/main/tara%20logo.png" alt="Profile" class="profile-image" />
+            <img
+              src="https://github.com/luthandodake10111/iliso--frontend-images-/raw/main/tara%20logo.png"
+              alt="Profile"
+              class="profile-image"
+            />
             <span class="tooltip">Tara Snell</span>
           </button>
 
           <!-- 🕶️ Secret dropdown that only appears under duress -->
-          <div class="user-info-dropdown" id="userInfoDropdown" style="display: none">
+          <div
+            class="user-info-dropdown"
+            id="userInfoDropdown"
+            style="display: none"
+          >
             <div class="user-details">
               <div class="user-title">Project Manager</div>
             </div>
@@ -84,52 +97,61 @@
             <span>Log-Out</span>
           </li>
         </ul>
+        </div>
       </aside>
 
       <!-- ✍️ Admin Application Chamber -->
       <div class="modal-overlay" id="adminModal" style="display: none">
         <div class="modal-content">
-          <h2>Add Admin</h2>
-          <input type="text" placeholder="Employee Name" id="adminName" />
-          <input type="text" placeholder="Employee ID" id="adminId" />
-          <select name="Dept" id="adminDept">
-            <option value="" selected>Select Department</option>
-            <option value="hr">HR</option>
-            <option value="sales-force">Sales Force</option>
-            <option value="Academy">Academy</option>
-            <option value="lc-studio">LC Studio</option>
-          </select>
-          <div class="button-group">
-            <button id="submitadmin">Submit</button>
-            <button id="canceladmin">Cancel</button>
-          </div>
+          <form action="" method="post">
+            <h2>Add Admin</h2>
+            <input type="text" placeholder="Employee Name" id="adminName" />
+            <input type="text" placeholder="Employee ID" id="adminId" />
+            <select name="Dept" id="adminDept">
+              <option value="" selected>Select Department</option>
+              <option value="hr">HR</option>
+              <option value="sales-force">Sales Force</option>
+              <option value="Academy">Academy</option>
+              <option value="lc-studio">LC Studio</option>
+            </select>
+            <div class="button-group">
+              <button id="submitadmin">Submit</button>
+              <button id="canceladmin">Cancel</button>
+            </div>
+          </form>
         </div>
       </div>
 
       <!-- 🧑‍💼 Employee Entry Portal -->
       <div class="modal-overlay" id="employeeModal" style="display: none">
         <div class="modal-content">
-          <h2>Add Employee</h2>
-          <input type="text" placeholder="Employee Name" id="employeeName" />
-          <select name="Dept" id="empDept">
-            <option value="" selected>Select Department</option>
-            <option value="hr">HR</option>
-            <option value="sales-force">Sales Force</option>
-            <option value="Academy">Academy</option>
-            <option value="lc-studio">LC Studio</option>
-          </select>
-          <input type="email" placeholder="Email" id="email" autocomplete="email" />
-          <input type="text" placeholder="Employee ID" id="employeeId" />
-          <div class="button-group">
-            <button id="submitemployee">Submit</button>
-            <button id="cancelemployee">Cancel</button>
-          </div>
+          <form action="" method="post">
+            <h2>Add Employee</h2>
+            <input type="text" placeholder="Employee Name" id="employeeName" />
+            <select name="Dept" id="empDept">
+              <option value="" selected>Select Department</option>
+              <option value="hr">HR</option>
+              <option value="sales-force">Sales Force</option>
+              <option value="Academy">Academy</option>
+              <option value="lc-studio">LC Studio</option>
+            </select>
+            <input
+              type="email"
+              placeholder="Email"
+              id="email"
+              autocomplete="email"
+            />
+            <input type="text" placeholder="Employee ID" id="employeeId" />
+            <div class="button-group">
+              <button id="submitemployee">Submit</button>
+              <button id="cancelemployee">Cancel</button>
+            </div>
+          </form>
         </div>
       </div>
 
       <!-- 📊 The Throne Room: Where data bows before you -->
       <div class="main-board">
-        
         <!-- 🙌 Welcome committee -->
         <div class="welcome-msg">
           <h2>Welcome Tara 👋🏻</h2>
@@ -164,8 +186,13 @@
             <h3>Active Employees</h3>
             <div class="search-bar">
               <div class="search-icon-input">
-                <i class='bx bx-search-alt search-icon'></i>
-                <input type="text" class="search-box" placeholder="Search" id="searchBox" />
+                <i class="bx bx-search-alt search-icon"></i>
+                <input
+                  type="text"
+                  class="search-box"
+                  placeholder="Search"
+                  id="searchBox"
+                />
               </div>
               <select id="sortByStatus">
                 <option value="all">Sort by: All</option>

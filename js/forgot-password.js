@@ -8,28 +8,39 @@ document.addEventListener('DOMContentLoaded', function() {
     e.preventDefault();
     
     const email = document.getElementById('email').value.trim();
+    
+    // Optional: simple empty check
+    if (!email) {
+      errorEl.textContent = 'Please enter your email address.';
+      errorEl.style.display = 'block';
+      return;
+    }
+
     submitBtn.disabled = true;
     submitBtn.textContent = 'Resetting...';
     messageEl.style.display = 'none';
     errorEl.style.display = 'none';
 
     try {
-      // Simulate API call - replace with actual fetch in production
-      console.log('Sending reset link to:', email);
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // Show success message
-      messageEl.textContent = 'Password reset link sent to your email!';
-      messageEl.style.display = 'block';
-      
-      // In a real app, you would redirect to a confirmation page or back to login
-      setTimeout(() => {
-        window.location.href = 'reset-password.html?email=' + encodeURIComponent(email);
-      }, 2000);
-        
-      
+      const response = await fetch('http://localhost/attendance/Backend/request_password_reset.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+if (response.ok) {
+  messageEl.textContent = data.message || 'Password reset link sent to your email! Please check your email to reset your password.';
+  messageEl.style.display = 'block';
+
+  // Do NOT redirect automatically here.
+} else {
+  throw new Error(data.error || 'Failed to send reset link');
+}
+
     } catch (err) {
-      errorEl.textContent = 'Failed to send reset link. Please try again.';
+      errorEl.textContent = err.message || 'Failed to send reset link. Please try again.';
       errorEl.style.display = 'block';
       console.error(err);
     } finally {
