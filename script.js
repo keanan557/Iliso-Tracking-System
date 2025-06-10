@@ -217,7 +217,7 @@ function updateCount(type) {
 }
 
 // ~~~ ADD EMPLOYEE FUNCTIONALITY (INTEGRATED WITH PHP) ~~~
-submitemployeeButton.addEventListener('click', async (event) => {
+submitemployeeButton.addEventListener('click', (event) => {
     event.preventDefault(); // Prevent the default form submission
     employeeModal.style.display = 'none';
 
@@ -242,84 +242,42 @@ submitemployeeButton.addEventListener('click', async (event) => {
     };
 
     // Send the data to the PHP script using fetch
-    try {
-        const response = await fetch('add_employee.php', { // Replace 'add_employee.php' with the actual path to your PHP script
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(employeeData)
+    fetch('add_employee.php', { // Replace 'add_employee.php' with the actual path to your PHP script
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(employeeData)
+    })
+        .then(response => response.json()) // Parse the JSON response from PHP
+        .then(data => {
+            if (data.success) {
+                // Add the new employee to the allEmployees array
+                allEmployees.push({
+                    name: employeeName,
+                    department: empDept,
+                    email: email,
+                    id: employeeId,
+                    status: 'Unmarked', // Or whatever default status you want
+                    time: new Date().toLocaleTimeString() // Or however you want to format the time
+                });
+
+                // Re-render the employee table to include the new employee
+                renderEmployeeTable();
+
+                // Optionally clear the form fields
+                document.getElementById('employeeName').value = '';
+                document.getElementById('empDept').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('employeeId').value = '';
+
+                alert('Employee added successfully!');
+            } else {
+                alert('Error adding employee: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while adding the employee.');
         });
-
-        if (!response.ok) {
-            // Handle HTTP errors (e.g., 400, 500)
-            const message = `HTTP error! Status: ${response.status}`;
-            throw new Error(message);
-        }
-
-        const data = await response.json(); // Parse the JSON response from PHP
-
-        if (data.success) {
-            // Add the new employee to the allEmployees array
-            allEmployees.push({
-                name: employeeName,
-                department: empDept,
-                email: email,
-                id: employeeId,
-                status: 'Unmarked', // Or whatever default status you want
-                time: new Date().toLocaleTimeString() // Or however you want to format the time
-            });
-
-            // Re-render the employee table to include the new employee
-            renderEmployeeTable();
-
-            // Optionally clear the form fields
-            document.getElementById('employeeName').value = '';
-            document.getElementById('empDept').value = '';
-            document.getElementById('email').value = '';
-            document.getElementById('employeeId').value = '';
-
-            alert('Employee added successfully!');
-        } else {
-            alert('Error adding employee: ' + data.message);
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        alert('An error occurred while adding the employee: ' + error.message);
-    }
-});
-
-// ~~~ LOGIN FUNCTIONALITY ~~~
-loginForm.addEventListener('submit', async function(event) {
-    event.preventDefault(); // Prevent the default form submission
-
-    const email = document.getElementById('userId').value;
-    const password = document.getElementById('password').value;
-    const rememberMe = document.getElementById('rememberMe').checked;
-
-    errorMessageElement.style.display = 'none'; // Reset error message
-
-    try {
-        // Send login request to PHP backend
-        const response = await fetch('login.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email, password, rememberMe }),
-        });
-
-        const result = await response.json(); // Parse JSON response
-
-        if (response.ok) {
-            // If login is successful, redirect to dashboard
-            window.location.href = '/dashboard';
-        } else {
-            throw new Error(result.message || "Invalid ID or password. Please try again.");
-        }
-    } catch (error) {
-        // Display error message
-        errorMessageElement.textContent = error.message;
-        errorMessageElement.style.display = 'block';
-    }
 });
