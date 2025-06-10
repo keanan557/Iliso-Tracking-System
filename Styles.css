@@ -883,7 +883,7 @@ body {
   min-height: 100vh;
 }
 
-.forgot-password, .reset-password {
+ .reset-password {
   display: flex;
   justify-content: center;
   margin: 20px auto;
@@ -899,8 +899,9 @@ body {
   max-width: 440px;
 }
 
-h2 {
-  margin: 20px 0;
+.title {
+  margin: 20px;
+  text-align: center;
   font-weight: 600;
 }
 
