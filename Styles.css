@@ -1,7 +1,12 @@
+<<<<<<< HEAD
+*{
+  font-family: 'Inter' ,'Open Sans', sans-serif;
+=======
 /* ===================== Base Reset ===================== */
 * {
   font-family: "Inter", "Open Sans", sans-serif;
   box-sizing: border-box;
+>>>>>>> 516504243e4b86e907c5603e398e06c99cee9146
 }
 
 body {
@@ -362,8 +367,13 @@ body {
   border: 2px solid #ddd;
   border-radius: 12px;
   padding: 1rem;
+<<<<<<< HEAD
+  width: 250px;
+  height: 100px;
+=======
   width: 120px;
   height: 120px;
+>>>>>>> 516504243e4b86e907c5603e398e06c99cee9146
   text-align: center;
   transition: transform 0.2s ease, background-color 0.2s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
