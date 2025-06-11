@@ -142,10 +142,6 @@ body {
     flex-grow: 1;
 }
 
-.nav-menu {
-    display: flex;
-    flex-direction: column;
-}
 
 .sidebar ul li {
     border-radius: 6px;
@@ -199,6 +195,7 @@ body {
 .nav-menu {
   display: flex;
   flex-direction: column;
+
 }
 
 
@@ -252,6 +249,7 @@ body {
     flex-direction: column;
     gap: 1rem;
 }
+
 
 
 select {
@@ -712,6 +710,7 @@ footer {
 .active-employees td {
   padding: 12px 16px;
   text-align: left;
+  
   /* You can also use 'center' or 'right' per column */
   vertical-align: middle;
   border-bottom: 1px solid #e0e0e0;
@@ -813,15 +812,7 @@ footer {
 }
 
 
-
-
-
-
-
-
 /* Styles for forgot & reset password */
-
-
 body {
   font-family: 'Inter', 'Open Sans', sans-serif;
   background-color: #f5f5f5;
@@ -1086,25 +1077,37 @@ img {
     /* border: 2px solid red; */
     width: 100%;
   }
-
+/* .profile-dropdown{
+  border: 2px solid black;
+} */
   .sidebar{
-    border: 2px solid red;
+    /* border: 2px solid red; */
     display: flex;
     width: 95%;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     /* height: 200px; */
+    /* gap: 3rem; */
+  }
+
+  #topMenu{
+    display: flex;
+    /* border: 2px solid black; */
+    width: 450px;
+    flex-direction: row;
+    gap: 3rem;
   }
 
   .sidebar img{
-    border: 2px solid black;
+    /* border: 2px solid black; */
+    width: 100px;
   }
 
-  .main-board{
+  /* .main-board{
     border: 2px solid blue;
-    /* width: 500px; */
+    width: 500px;
     
-  }
+  } */
 
   .active-employees{
     /* border: 2px solid red; */
@@ -1128,9 +1131,12 @@ img {
   }
 
   .right-hand-stuff{
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     display: flex;
-    /* width: 300px; */
+    width:100%;
+    /* justify-content: center; */
+    align-items: center;
+    
   }
 
   /* .nav-link{
