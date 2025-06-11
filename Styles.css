@@ -472,6 +472,7 @@ footer {
   font-weight: bold;
 }
 
+/* Shared button styles */
 .button-group {
   display: flex;
   justify-content: space-between;
@@ -480,41 +481,43 @@ footer {
 
 .button-group button {
   flex: 1;
-  padding: 10px 5px;
+  padding: 12px 0;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+  display: flex;
+  align-items: center;   /* vertical centering */
+  justify-content: center; /* horizontal centering */
+  transition: all 0.2s ease-in-out;
 }
 
-#confirmLogoutBtn {
-  background-color: #ea1c1f;
-  font-size: 13px;
-}
-
-#cancelLogoutBtn {
-  background-color: #ccc;
-  padding: auto;
-}
-
-/* Confirm Logout Button */
-#confirmLogoutBtn:hover {
-  background-color: #ff0307; 
+/* Submit Button */
+#submitadmin {
+  background-color: #0052cc; /* Blue */
   color: white;
+}
+
+#submitadmin:hover {
+  background-color: #003f99;
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Cancel Logout Button */
-#cancelLogoutBtn:hover {
-  background-color: #b3b3b3; /* Slightly darker grey for hover */
+/* Cancel Button */
+#canceladmin {
+  background-color: #999999;  /* Darker grey */
+  color: #fff;
+}
+
+/* Cancel Hover */
+#canceladmin:hover {
+  background-color: #777777;  /* Even darker on hover */
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-.button-group button {
-  transition: all 0.2s ease-in-out;
-}
-
 
 .search-bar {
   display: flex;

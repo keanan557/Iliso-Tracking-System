@@ -1,0 +1,134 @@
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Card layout */
+.card-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Page heading
+.page-heading {
+  text-align: center;
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 30px;
+  font-weight: bold;
+} */
+
+/* Page heading */
+.page-heading {
+  text-align: center;
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 50px; /* increased space between heading and cards */
+  font-weight: bold;
+}
+
+
+/* Individual card styling */
+.card {
+  background-color: white;
+  width: 250px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  border: 2px solid #5061a9;
+}
+
+/* Avatar styles */
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 10px;
+    border-radius: 8px; /* optional: slightly rounded corners */
+}
+
+/* Initials fallback */
+.initial {
+  width: 60px;
+  height: 60px;
+  background-color: #d1d1d1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 auto 10px;
+}
+
+/* bvfgbvhjkrgtlthg */
+
+.menu-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.menu {
+  position: absolute;
+  bottom: 40px;
+  right: 10px;
+  background: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  display: none;
+  flex-direction: column;
+  font-size: 14px;
+  z-index: 1000;
+}
+
+.menu button {
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.menu button:hover {
+  background-color: #f0f0f0;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  width: 300px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

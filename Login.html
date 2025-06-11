@@ -8,42 +8,50 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Container that centers the login form -->
   <div class="login-container">
+    <!-- Login form card -->
     <form id="login-form" class="login-card">
       <div class="top-logo">
         <img class="logo" src="assets/Logo.png" />
         <h2 class="title">Log in</h2>
       </div>
       <p class="subtitle">Youth is 37% of South Africa, but 100% of its future</p>
+      <!-- Input fields container -->
       <div class="input-container">
+        <!-- Admin ID input group -->
         <div class="input-group">
           <img class="icon" src="assets/union-1.png" />
           <input type="text" id="userId" placeholder="Admin ID" required />
         </div>
+        <!-- Password input group -->
         <div class="input-group">
           <img class="icon" src="assets/Key.png" />
           <input type="password" id="password" placeholder="Password" required />
         </div>
       </div>
+      <!-- Remember Me checkbox -->
       <div class="remember-me">
         <label>
           <input type="checkbox" id="rememberMe" /> Remember me
         </label>
       </div>
+      <!-- Submit button for logging in -->
       <button type="submit" class="login-button">Login</button>
       <div id="error-message" class="error-message"></div>
+      <!-- Forgot password link -->
       <p class="forgot-password">
         <a href="/forgot-password">Forgot Password?</a>
       </p>
     </form>
   </div>
-
+  <!-- Loading overlay shown during login -->
   <div class="loader-overlay" id="loaderOverlay">
     <div class="loader-card">
       <p>Logging In...</p>
     </div>
   </div>
-
+  <!-- External JavaScript file to handle form logic -->B'
   <script src="Login.js"></script>
 </body>
 </html>
