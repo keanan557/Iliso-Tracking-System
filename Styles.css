@@ -799,6 +799,7 @@ select {
   background-size: 25px;
 }
 
+/* Shared button styles */
 .button-group {
   display: flex;
   padding: 20px;
