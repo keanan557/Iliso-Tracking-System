@@ -1,18 +1,18 @@
-<<<<<<< HEAD
-*{
-  font-family: 'Inter' ,'Open Sans', sans-serif;
-=======
 /* ===================== Base Reset ===================== */
 * {
   font-family: "Inter", "Open Sans", sans-serif;
   box-sizing: border-box;
->>>>>>> 516504243e4b86e907c5603e398e06c99cee9146
 }
 
 body {
+  font-family: 'Inter', 'Open Sans', sans-serif;
+  background-color: #f5f5f5;
   margin: 0;
   padding: 0;
-  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
 /* ===================== Layout Styles ===================== */
@@ -353,7 +353,7 @@ body {
 .metrics-dashboard {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem;
   padding: 1rem;
   flex-wrap: wrap;
 }
@@ -363,13 +363,8 @@ body {
   border: 2px solid #ddd;
   border-radius: 12px;
   padding: 1rem;
-<<<<<<< HEAD
   width: 250px;
-  height: 100px;
-=======
-  width: 120px;
   height: 120px;
->>>>>>> 516504243e4b86e907c5603e398e06c99cee9146
   text-align: center;
   transition: transform 0.2s ease, background-color 0.2s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
@@ -381,12 +376,12 @@ body {
 
 /* 🎨 Department of Visual Psychology: Custom colors for status categories */
 #onsiteBox {
-  background-color: #00b0871a; /* Green tint */
+  background-color: #00b0871a; 
   border-color: #00b087;
 }
 
 #offsiteBox {
-  background-color: #df04041a; /* Red tint */
+  background-color: #df04041a;
   border-color: #df0404;
 }
 
@@ -872,27 +867,7 @@ footer {
   color: #1f1f1f;
 }
 
-
-
-
-
-
-
-
 /* Styles for forgot & reset password */
-
-
-body {
-  font-family: 'Inter', 'Open Sans', sans-serif;
-  background-color: #f5f5f5;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
  .reset-password {
   display: flex;
   justify-content: center;
