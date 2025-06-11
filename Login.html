@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login Page</title>
-  <link rel="stylesheet" href="Login.css" />
+  <link rel="stylesheet" href="Styles.css" />
+  <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -17,11 +18,11 @@
       <p class="subtitle">Youth is 37% of South Africa, but 100% of its future</p>
       <div class="input-container">
         <div class="input-group">
-          <img class="icon" src="assets/union-1.png" />
+          <i class='bx  bx-user-circle'></i> 
           <input type="text" id="userId" placeholder="Admin ID" required />
         </div>
         <div class="input-group">
-          <img class="icon" src="assets/Key.png" />
+          <i class='bx  bx-key-alt'></i> 
           <input type="password" id="password" placeholder="Password" required />
         </div>
       </div>
@@ -32,18 +33,16 @@
       </div>
       <button type="submit" class="login-button">Login</button>
       <div id="error-message" class="error-message"></div>
-      <p class="forgot-password">
+      <p class="forgot-link">
         <a href="ForgotPassword.html">Forgot Password?</a>
       </p>
     </form>
   </div>
-
   <div class="loader-overlay" id="loaderOverlay">
     <div class="loader-card">
       <p>Logging In...</p>
     </div>
   </div>
-
   <script src="Login.js"></script>
 </body>
 </html>
