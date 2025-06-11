@@ -8,6 +8,7 @@ body {
   font-family: 'Inter', 'Open Sans', sans-serif;
   background-color: #f5f5f5;
   margin: 0;
+  height: 100%;
   padding: 0;
   display: flex;
   justify-content: center;
@@ -186,14 +187,17 @@ body {
 
 .dashboard-container {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000000;
   height: 100vh;
+  width: 100%;
 }
 
 .sidebar {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  width: 200px;
+  width: 250px;
   background: #f8f9fb;
   padding: 1rem;
   height: 100vh;
@@ -353,30 +357,31 @@ body {
 .metrics-dashboard {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
-  padding: 1rem;
+  gap: 2rem;         /* Increased gap for more spacing */
+  padding: 1.5rem;  /* Slightly more padding */
   flex-wrap: wrap;
+  display: none;
 }
 
 .metric-box {
   background-color: #f5f5f5;
   border: 2px solid #ddd;
   border-radius: 12px;
-  padding: 1rem;
-  width: 250px;
-  height: 120px;
+  padding: 1.5rem;    /* More padding inside the box */
+  width: 200px;       /* Larger width */
+  height: 160px;      /* Larger height */
   text-align: center;
   transition: transform 0.2s ease, background-color 0.2s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Slightly stronger shadow */
 }
 
 .metric-box:hover {
-  transform: scale(1.08);
+  transform: scale(1.1); /* Slightly bigger scale on hover */
 }
 
-/* 🎨 Department of Visual Psychology: Custom colors for status categories */
+
 #onsiteBox {
-  background-color: #00b0871a; 
+  background-color: #00b0871a;
   border-color: #00b087;
 }
 
@@ -386,11 +391,11 @@ body {
 }
 
 #unmarkedBox {
-  background-color: #b5b7c01a; /* Gray tint */
+  background-color: #b5b7c01a;
   border-color: #b5b7c0;
 }
 
-/* 🕶️ Optical Charisma: Hover colors meant to distract from actual attendance */
+
 #onsiteBox:hover {
   background-color: #00b08733;
 }
@@ -401,11 +406,12 @@ body {
   background-color: #b5b7c033;
 }
 
-/* 🔠 Typographic Theatre: Legit-looking data metrics */
+
 .metric-box h3 {
-  font-size: 1rem;
-  margin-bottom: 0.3rem;
+  font-size: 1.25rem;  /* Larger font */
+  margin-bottom: 0.5rem; /* More margin for spacing */
 }
+
 
 .metric-box .count {
   font-size: 2rem;
@@ -575,7 +581,7 @@ button.offsite {
 .active-employees {
   background-color: #fff;
   width: 1250px;
-  height: 613px;
+  
   border-radius: 30px;
   box-shadow: 0 10px 60px rgba(226, 236, 249, 0.5);
   padding: 20px;
@@ -614,12 +620,13 @@ button.offsite {
 
 button {
   font-size: 14px;
+  margin-top: 10px;
   font-weight: 600;
   border-radius: 4px;
   padding: 4px 12px;
   border: 1px solid;
   cursor: default;
-  width: 86px;
+  width: fit-content;
   height: 29px;
   text-align: center;
   gap: 10px;
@@ -867,8 +874,9 @@ footer {
   color: #1f1f1f;
 }
 
-/* Styles for forgot & reset password */
- .reset-password {
+
+
+ .forgot-password {
   display: flex;
   justify-content: center;
   margin: 20px auto;
@@ -884,227 +892,32 @@ footer {
   max-width: 440px;
 }
 
+.forgot-link {
+  text-align: center; 
+  margin-top: 1rem;
+  font-size: 16px;
+  color: #6b7280; 
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+}
+.forgot-link a {
+  color: #000000; 
+  text-decoration: none;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+.forgot-link a:hover, .forgot-link a:focus {
+  color: #0F4392; 
+  text-decoration: underline;
+  outline: none;
+}
+
 .title {
   margin: 20px;
   text-align: center;
   font-weight: 600;
 }
 
-.inspirational-text {
-  color: grey;
-  margin: 0 0 20px;
-}
-
-.input-group {
-  position: relative;
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-.input-group input {
-  width: 100%;
-  padding: 15px 15px 15px 40px;
-  border: 1px solid #ccc;
-  border-radius: 7px;
-  font-size: 16px;
-  box-sizing: border-box;
-}
-
-.button {
-  width: 200px;
-  height: 46px;
-  cursor: pointer;
-  background-color: #0F4392;
-  color: #fff;
-  border: none;
-  border-radius: 12px;
-  font-weight: bold;
-  font-size: 16px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  margin-top: 10px;
-}
-
-.button:hover {
-  background-color: #7DC5F8;
-  color: #000;
-}
-
-.button[disabled] {
-  opacity: 0.6;
-  cursor: not-allowed;
-  background-color: #0F4392;
-}
-
-.message {
-  color: green;
-  margin-top: 15px;
-  display: none;
-}
-
-.error {
-  color: red;
-  margin-top: 15px;
-  display: none;
-}
-
-img {
-  width: 50px;
-  height: 50px;
-  object-fit: contain;
-}
-
-/* ===================== Layout Styles ===================== */
-
-/* Main container */
-.login-container {
-  font-family: 'Inter', 'Open Sans', sans-serif;
-  display: flex;
-  justify-content: center;
-  margin: 70px auto;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  color: #000000;
-  background-color: #ffffff;
-  height: 595px;
-  width: 440px;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-/* ===================== Text Styles ===================== */
-
-.title {
-  font-size: 30px;
-  font-weight: 500;
-}
-
-.subtitle {
-  margin-bottom: 2rem;
-}
-
-.error-message {
-  color: red;
-  margin-top: 1rem;
-}
-
-
-
-/* ===================== Input Styles ===================== */
-
-.input-container {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.input-group {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.input-group .icon {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  padding: 12px;
-  pointer-events: none;
-}
-
-.input-group input {
-  width: 343px;
-  height: 51px;
-  padding-left: 40px;
-  border-radius: 7px;
-  border: 2px solid #ccc;
-  font-size: 14px;
-}
-
-.input-group input::placeholder {
-  font-weight: 400;
-  font-family: Poppins, sans-serif;
-  color: #000;
-  font-size: 16px;
-}
-
-/* ===================== Remember Me ===================== */
-
-.remember-me {
-  text-align: left;
-  font-size: 13px;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  padding-left: 5px;
-}
-
-.remember-me label {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-  gap: 10px;
-  justify-content: start;
-  width: 100%;
-  padding-left: 20px;
-}
-
-/* ===================== Login Button ===================== */
-
-.login-button {
-  width: 200px;
-  height: 46px;
-  cursor: pointer;
-  background-color: #0F4392;
-  color: #fff;
-  border: none;
-  border-radius: 12px;
-  padding: 12px 0;
-  font-weight: bold;
-  font-size: 16px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Button hover effect: changes background and font color */
-.login-button:hover {
-  background-color: #7DC5F8;
-  color: #000; 
-}
-
-/* ===================== Forgot Password Link ===================== */
-
-.forgot-password {
-  margin-top: 10px;
-}
-
-.forgot-password a {
-  color: #0F4392;
-  font-size: 12px;
-  display: inline-block;
-  margin-top: 8px;
-  text-decoration: none;
-  transition: color 0.3s ease, text-decoration 0.3s ease;
-}
-
-.forgot-password a:hover {
-  color: #7DC5F8; 
-  text-decoration: underline;
-}
-
-.input-group.error {
-  border-color: #ff4444;
-}
-
-.error {
-  color: #ff4444;
-  margin-top: 5px;
-  display: block;
-}
-
-.message {
-  color: #4CAF50;
-  margin-top: 5px;
-  display: block;
-}
 
 /* responsive design */
 /* tablet */
