@@ -917,8 +917,30 @@ footer {
 /* responsive design */
 /* tablet */
 @media (max-width:1024px) {
-  
-}
+   .dashboard-container{
+    display: flex;
+    flex-direction: column;
+    /* border: 2px solid red; */
+    width: 100%;
+  }
+ .sidebar{
+    /* border: 2px solid red; */
+    display: flex;
+    width: 95%;
+    flex-direction: column;
+    justify-content: center;
+    /* height: 300px; */
+    /* gap: 3rem; */
+  }
+   .active-employees{
+    /* border: 2px solid red; */
+    width: 100%;
+  }
+  .flex-spacer{
+    display: none;
+  }
+  }
+/* iphone 12 mobile */
 
 
 /* mobile */
@@ -995,4 +1017,53 @@ footer {
   /* .nav-link{
     
   } */
+
+
 }
+
+/* smaller devices */
+@media (max-width:600px) {
+.dashboard-container{
+    display: flex;
+    flex-direction: column;
+    /* border: 2px solid red; */
+    width: 100%;
+  }
+  .sidebar{
+    /* border: 2px solid red; */
+    display: flex;
+    width: 95%;
+    flex-direction: column;
+    justify-content: center;
+    /* height: 200px; */
+    /* gap: 3rem; */
+    align-items: center;
+  }
+
+  #topMenu{
+    display: flex;
+    /* border: 2px solid black; */
+    width: 170px;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .active-employees{
+    /* border: 2px solid red; */
+    width: 100%;
+  }
+
+    .main-board{
+    /* border: 2px solid blue; */
+    width: 90%
+    
+  }
+   .search-bar{
+    width: 150px;
+  }
+
+  #logoutButton{
+    width: 170px;
+  }
+}
+
