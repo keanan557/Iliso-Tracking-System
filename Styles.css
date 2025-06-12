@@ -779,12 +779,13 @@ button.offsite {
 
 button {
   font-size: 14px;
+  margin-top: 10px;
   font-weight: 600;
   border-radius: 4px;
   padding: 4px 12px;
   border: 1px solid;
   cursor: default;
-  width: 86px;
+  width: fit-content;
   height: 29px;
   text-align: center;
   gap: 10px;
@@ -962,6 +963,7 @@ select {
   background-size: 25px;
 }
 
+/* Shared button styles */
 .button-group {
   display: flex;
   padding: 20px;
@@ -1081,8 +1083,30 @@ footer {
 /* responsive design */
 /* tablet */
 @media (max-width:1024px) {
-  
-}
+   .dashboard-container{
+    display: flex;
+    flex-direction: column;
+    /* border: 2px solid red; */
+    width: 100%;
+  }
+ .sidebar{
+    /* border: 2px solid red; */
+    display: flex;
+    width: 95%;
+    flex-direction: column;
+    justify-content: center;
+    /* height: 300px; */
+    /* gap: 3rem; */
+  }
+   .active-employees{
+    /* border: 2px solid red; */
+    width: 100%;
+  }
+  .flex-spacer{
+    display: none;
+  }
+  }
+/* iphone 12 mobile */
 
 
 /* mobile */
@@ -1094,25 +1118,37 @@ footer {
     /* border: 2px solid red; */
     width: 100%;
   }
-
+/* .profile-dropdown{
+  border: 2px solid black;
+} */
   .sidebar{
-    border: 2px solid red;
+    /* border: 2px solid red; */
     display: flex;
     width: 95%;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     /* height: 200px; */
+    /* gap: 3rem; */
+  }
+
+  #topMenu{
+    display: flex;
+    /* border: 2px solid black; */
+    width: 450px;
+    flex-direction: row;
+    gap: 3rem;
   }
 
   .sidebar img{
-    border: 2px solid black;
+    /* border: 2px solid black; */
+    width: 100px;
   }
 
-  .main-board{
+  /* .main-board{
     border: 2px solid blue;
-    /* width: 500px; */
+    width: 500px;
     
-  }
+  } */
 
   .active-employees{
     /* border: 2px solid red; */
@@ -1136,12 +1172,64 @@ footer {
   }
 
   .right-hand-stuff{
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     display: flex;
-    /* width: 300px; */
+    width:100%;
+    /* justify-content: center; */
+    align-items: center;
+    
   }
 
   /* .nav-link{
     
   } */
+
+
 }
+
+/* smaller devices */
+@media (max-width:600px) {
+.dashboard-container{
+    display: flex;
+    flex-direction: column;
+    /* border: 2px solid red; */
+    width: 100%;
+  }
+  .sidebar{
+    /* border: 2px solid red; */
+    display: flex;
+    width: 95%;
+    flex-direction: column;
+    justify-content: center;
+    /* height: 200px; */
+    /* gap: 3rem; */
+    align-items: center;
+  }
+
+  #topMenu{
+    display: flex;
+    /* border: 2px solid black; */
+    width: 170px;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .active-employees{
+    /* border: 2px solid red; */
+    width: 100%;
+  }
+
+    .main-board{
+    /* border: 2px solid blue; */
+    width: 90%
+    
+  }
+   .search-bar{
+    width: 150px;
+  }
+
+  #logoutButton{
+    width: 170px;
+  }
+}
+

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Employee Cards</title>
+    <link rel="stylesheet" href="Admin.css" />
+</head>
+<body>
+
+  <!-- Page Heading -->
+  <h1 class="page-heading">Administration Information</h1></br>
+  <!-- Employee Cards -->
+  <div class="card-container" id="cardContainer"></div>
+
+    <!-- Edit Modal -->
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <h2>Edit Admin</h2>
+      <input type="text" id="editName" placeholder="Full Name" />
+      <input type="email" id="editEmail" placeholder="Email" />
+      <input type="text" id="editPhone" placeholder="Contact No" />
+      <input type="text" id="editId" placeholder="Employee ID" />
+      <button class="save-btn" onclick="saveEdit()">Save</button>
+      <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+
+    </div>
+  </div>
+
+  <script src="Admin.js"></script>
+</body>
+</html>
+
