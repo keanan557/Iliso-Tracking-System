@@ -100,6 +100,24 @@
       
       </aside>
 
+      <!-- ✍️ Admin Application Chamber -->
+      <div class="modal-overlay" id="adminModal" style="display: none">
+        <div class="modal-content">
+          <form action="" method="post">
+            <h2>Add Admin</h2>
+            <input type="text" placeholder="Username" id="adminName" />
+            <input type="text" placeholder="Email" id="adminEmail" />
+            <input type="phone" placeholder="Phone number" id="adminNumber" />
+            <input type="password" placeholder="Password" id="adminPassword" />
+            <input type="password" placeholder="Main Password" id="adminMainPassword" />
+            <div class="button-group">
+              <button id="submitadmin">Submit</button>
+              <button id="canceladmin">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
       <!-- 🧑‍💼 Employee Entry Portal -->
       <div class="modal-overlay" id="employeeModal" style="display: none">
         <div class="modal-content">
@@ -130,6 +148,7 @@
 
       <!-- 📊 The Throne Room: Where data bows before you -->
       <div class="main-board">
+        
         <!-- 🙌 Welcome committee -->
         <div class="welcome-msg">
           <h2>Welcome Tara 👋🏻</h2>
@@ -153,6 +172,7 @@
 
         <!-- 📋 Employee Intel Database -->
         <section class="active-employees">
+          
           <div class="search-contain">
             <h3>Active Employees</h3>
             <div class="search-bar">
@@ -172,7 +192,7 @@
               </select>
             </div>
           </div>
-
+--
           <!-- 🗂️ The Unholy Table of Truth -->
           <div class="table-container" id="tableContainer">
             <table>
@@ -209,6 +229,30 @@
         </footer>
       </div>
     </div>
+    <div class="panic-button-container">
+    <button id="panic-button" class="panic-button off">
+        <span class="toggle-switch"></span>
+    </button>
+</div>
+
+<!-- Panic Button Confirmation Modal -->
+<div id="panic-confirmation-modal" style="display: none;">
+    <div class="modal-content">
+        <h2>Activate Panic Mode</h2>
+        <p>Are you sure you want to activate the panic mode?</p>
+        <div class="warning-section">
+            <i class="bx bx-error-circle"></i>
+            <span>Warning</span>
+            <p>This will trigger an alert to all users and emergency systems.</p>
+        </div>
+        <div class="button-group">
+           <button id="confirm-continue">Continue</button>
+            <button id="cancel-panic"> Cancel</button>
+        </div>
+           
+    </div>
+</div>
+<link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"  rel="stylesheet">
 
     <!-- 🔮 JavaScript sorcery begins here -->
     <script src="js/script.js"></script>

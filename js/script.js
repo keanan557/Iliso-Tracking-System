@@ -282,3 +282,36 @@ submitemployeeButton.addEventListener('click', (event) => {
         });
 });
 
+// ~~~ PANIC BUTTON INITIATION ~~~
+document.addEventListener("DOMContentLoaded", function () {
+    const panicButton = document.getElementById("panic-button");
+    const confirmationModal = document.getElementById("panic-confirmation-modal");
+
+    if (!panicButton) return;
+
+    panicButton.addEventListener("click", function () {
+        // Toggle state
+        if (this.classList.contains("off")) {
+            this.classList.remove("off");
+            this.classList.add("on");
+
+            // Show confirmation modal
+            confirmationModal.style.display = "flex";
+
+            // Handle "Continue" button click
+            document.getElementById("confirm-continue").addEventListener("click", () => {
+                window.location.href = "panic-page.php"; // Redirect to panic page
+            });
+
+            // Handle "Cancel" button click
+            document.getElementById("cancel-panic").addEventListener("click", () => {
+                this.classList.remove("on");
+                this.classList.add("off");
+                confirmationModal.style.display = "none";
+            });
+        } else {
+            this.classList.remove("on");
+            this.classList.add("off");
+        }
+    });
+});

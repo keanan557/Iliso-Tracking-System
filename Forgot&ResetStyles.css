@@ -252,3 +252,28 @@ img {
   margin-top: 5px;
   display: block;
 }
+/* Container for the "Back to Login" link */
+.redirect-login {
+  text-align: center;               /* Center-align the link text */
+  margin-top: 1rem;                 /* Add space above the link */
+  font-size: 16px;                  /* Match font size for consistency */
+  font-family: 'Inter', sans-serif;/* Use same font for design consistency */
+  font-weight: 500;                /* Medium font weight for readability */
+  color: #6b7280;                   /* Muted gray tone, optional if needed */
+}
+
+/* Style for the actual anchor/link element */
+.redirect-login a {
+  color: #000000;                   /* Default link color (black) */
+  text-decoration: none;           /* Remove underline by default */
+  transition: color 0.3s ease;     /* Smooth transition on hover/focus */
+  cursor: pointer;                 /* Change cursor to pointer on hover */
+}
+
+/* Hover and focus states to improve UX */
+.redirect-login a:hover,
+.redirect-login a:focus {
+  color: #0F4392;                   /* Deep blue on hover/focus for interactivity */
+  text-decoration: underline;      /* Add underline to show it's clickable */
+  outline: none;                   /* Remove default outline for cleaner look */
+}
