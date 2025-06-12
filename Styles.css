@@ -1236,5 +1236,22 @@ footer {
   #logoutButton{
     width: 170px;
   }
+
+  /* Hide the Department, Clock In Time, Email, and Employee ID columns */
+#tableContainer th:nth-child(2), /* Department */
+#tableContainer th:nth-child(3), /* Clock In Time */
+#tableContainer th:nth-child(4), /* Email */
+#tableContainer th:nth-child(5)  /* Employee ID */
+{
+  display: none;
+}
+
+#employeeTableBody td:nth-child(2), /* Department */
+#employeeTableBody td:nth-child(3), /* Clock In Time */
+#employeeTableBody td:nth-child(4), /* Email */
+#employeeTableBody td:nth-child(5)  /* Employee ID */
+{
+  display: none;
+}
 }
 
