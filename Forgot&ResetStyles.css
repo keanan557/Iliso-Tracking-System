@@ -1,0 +1,279 @@
+
+/* Styles for forgot & reset password */
+
+
+body {
+  font-family: 'Inter', 'Open Sans', sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.forgot-password, .reset-password {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #000000;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 440px;
+}
+
+h2 {
+  margin: 20px 0;
+  font-weight: 600;
+}
+
+.inspirational-text {
+  color: grey;
+  margin: 0 0 20px;
+}
+
+.input-group {
+  position: center;
+  width: 100%;
+  margin-bottom: 20px;
+  margin-left: 25px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 15px 15px 15px 40px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.button {
+  width: 200px;
+  height: 46px;
+  cursor: pointer;
+  background-color: #0F4392;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-top: 10px;
+}
+
+.button:hover {
+  background-color: #7DC5F8;
+  color: #000;
+}
+
+.button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #0F4392;
+}
+
+.message {
+  color: green;
+  margin-top: 15px;
+  display: none;
+}
+
+.error {
+  color: red;
+  margin-top: 15px;
+  display: none;
+}
+
+img {
+  width: 70px;
+  height: 50px;
+  object-fit: contain;
+}
+
+
+
+/* ===================== Layout Styles ===================== */
+
+/* Main container */
+.login-container {
+  font-family: 'Inter', 'Open Sans', sans-serif;
+  display: flex;
+  justify-content: center;
+  margin: 70px auto;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #000000;
+  background-color: #ffffff;
+  height: 595px;
+  width: 440px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* ===================== Text Styles ===================== */
+
+.title {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.subtitle {
+  margin-bottom: 2rem;
+}
+
+.error-message {
+  color: red;
+  margin-top: 1rem;
+}
+
+
+
+/* ===================== Input Styles ===================== */
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-group .icon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  padding: 12px;
+  pointer-events: none;
+}
+
+.input-group input {
+  width: 343px;
+  height: 51px;
+  padding-left: 40px;
+  border-radius: 7px;
+  border: 2px solid #ccc;
+  font-size: 14px;
+}
+
+.input-group input::placeholder {
+  font-weight: 400;
+  font-family: Poppins, sans-serif;
+  color: #000;
+  font-size: 16px;
+}
+
+/* ===================== Remember Me ===================== */
+
+.remember-me {
+  text-align: left;
+  font-size: 13px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 5px;
+}
+
+.remember-me label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  gap: 10px;
+  justify-content: start;
+  width: 100%;
+  padding-left: 20px;
+}
+
+/* ===================== Login Button ===================== */
+
+.login-button {
+  width: 200px;
+  height: 46px;
+  cursor: pointer;
+  background-color: #0F4392;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 0;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Button hover effect: changes background and font color */
+.login-button:hover {
+  background-color: #7DC5F8;
+  color: #000; 
+}
+
+/* ===================== Forgot Password Link ===================== */
+
+.forgot-password {
+  margin-top: 10px;
+}
+
+.forgot-password a {
+  color: #0F4392;
+  font-size: 12px;
+  display: inline-block;
+  margin-top: 8px;
+  text-decoration: none;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.forgot-password a:hover {
+  color: #7DC5F8; 
+  text-decoration: underline;
+}
+
+.input-group.error {
+  border-color: #ff4444;
+}
+
+.error {
+  color: #ff4444;
+  margin-top: 5px;
+  display: block;
+}
+
+.message {
+  color: #4CAF50;
+  margin-top: 5px;
+  display: block;
+}
+/* Container for the "Back to Login" link */
+.redirect-login {
+  text-align: center;               /* Center-align the link text */
+  margin-top: 1rem;                 /* Add space above the link */
+  font-size: 16px;                  /* Match font size for consistency */
+  font-family: 'Inter', sans-serif;/* Use same font for design consistency */
+  font-weight: 500;                /* Medium font weight for readability */
+  color: #6b7280;                   /* Muted gray tone, optional if needed */
+}
+
+/* Style for the actual anchor/link element */
+.redirect-login a {
+  color: #000000;                   /* Default link color (black) */
+  text-decoration: none;           /* Remove underline by default */
+  transition: color 0.3s ease;     /* Smooth transition on hover/focus */
+  cursor: pointer;                 /* Change cursor to pointer on hover */
+}
+
+/* Hover and focus states to improve UX */
+.redirect-login a:hover,
+.redirect-login a:focus {
+  color: #0F4392;                   /* Deep blue on hover/focus for interactivity */
+  text-decoration: underline;      /* Add underline to show it's clickable */
+  outline: none;                   /* Remove default outline for cleaner look */
+}

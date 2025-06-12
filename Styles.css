@@ -804,6 +804,7 @@ select {
   background-size: 25px;
 }
 
+/* Shared button styles */
 .button-group {
   display: flex;
   padding: 20px;
@@ -935,25 +936,37 @@ footer {
     /* border: 2px solid red; */
     width: 100%;
   }
-
+/* .profile-dropdown{
+  border: 2px solid black;
+} */
   .sidebar{
-    border: 2px solid red;
+    /* border: 2px solid red; */
     display: flex;
     width: 95%;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     /* height: 200px; */
+    /* gap: 3rem; */
+  }
+
+  #topMenu{
+    display: flex;
+    /* border: 2px solid black; */
+    width: 450px;
+    flex-direction: row;
+    gap: 3rem;
   }
 
   .sidebar img{
-    border: 2px solid black;
+    /* border: 2px solid black; */
+    width: 100px;
   }
 
-  .main-board{
+  /* .main-board{
     border: 2px solid blue;
-    /* width: 500px; */
+    width: 500px;
     
-  }
+  } */
 
   .active-employees{
     /* border: 2px solid red; */
@@ -977,9 +990,12 @@ footer {
   }
 
   .right-hand-stuff{
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     display: flex;
-    /* width: 300px; */
+    width:100%;
+    /* justify-content: center; */
+    align-items: center;
+    
   }
 
   /* .nav-link{
