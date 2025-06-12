@@ -5,21 +5,21 @@ const employees = [
     email: "Tarasnell@lifechoices.co.za",
     contact: "082 633 9613",
     id: "12345",
-    avatar: "/assets/Tara.png"
+    avatar: "https://raw.githubusercontent.com/luthandodake10111/iliso--frontend-images-/refs/heads/main/Tara.png"
   },
   {
     name: "Keziah Petersen",
     email: "keziahpetersen@lifechoices.co.za",
     contact: "082 633 9613",
     id: "09876",
-    avatar: "/assets/Keziah.png"
+    avatar: "https://raw.githubusercontent.com/luthandodake10111/iliso--frontend-images-/refs/heads/main/Keziah.png"
   },
   {
     name: "Maxine Oliver",
     email: "maxine@lifechoices.co.za",
     contact: "0216964157",
     id: "80988",
-    avatar: "/assets/Maxine.png"
+    avatar: "https://raw.githubusercontent.com/luthandodake10111/iliso--frontend-images-/refs/heads/main/Maxine.png"
   }
 ];
 
