@@ -320,6 +320,170 @@ body {
 .button-group button {
   transition: all 0.2s ease-in-out;
 }
+/* ===================== Panic Button Styles Outside Dashboard ===================== */
+.panic-button-container {
+    position: fixed;
+    top: 40px;
+    right: 20px;
+    z-index: 999; 
+}
+
+.panic-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px; 
+    height: 50px; 
+    border: none;
+    border-radius: 15px; 
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.panic-button.off {
+    background-color: transparent; /* No background color when off */
+}
+
+.panic-button.on {
+    background-color:  transparent; /* No background color when off */
+}
+
+/* Toggle Switch (Circular) Dashboard*/
+.panic-button .toggle-switch {
+    position: relative;
+    width: 30px;
+    height: 18px;
+    border-radius: 10px;
+    background-color: #918f8f; /* Gray when off */
+    transition: background-color 0.3s ease;
+}
+
+.panic-button.on .toggle-switch {
+    background-color: #f51313; /* Red when on */
+}
+
+.panic-button .toggle-switch::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #fff; /* White circle within the buttons */
+    transition: transform 0.3s ease;
+}
+
+.panic-button.on .toggle-switch::before {
+    transform: translateX(14px); /* Move circle to the right when on */
+}
+/* ===================== Panic Button Confirmation Modal Styles ===================== */
+#panic-confirmation-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.modal-content {
+    background: #f8f9fb;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    width: 400px;
+    max-width: 90%;
+    padding: 2rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-family: "Inter", "Open Sans", sans-serif;
+}
+
+.modal-content h2 {
+    margin: 0 0 1rem 0;
+    font-weight: 700;
+    color: #0f4392;
+    text-align: center;
+}
+
+.modal-content p {
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Warning Section */
+.warning-section {
+    background-color: #fff5cd; 
+    border-left: 5px solid #ff9f43; 
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 6px;
+}
+
+.warning-section i {
+    font-size: 20px;
+    color: #ff9f43;
+}
+
+.warning-section span {
+    font-weight: bold;
+    color: #ff9f43;
+}
+
+.warning-section p {
+    font-size: 14px;
+    color: #333;
+    margin: 0;
+    flex-grow: 1;
+}
+/* Buttons Group */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.button-group button {
+    flex: 1;
+    padding: 0.75rem 1.2rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    font-family: "Inter", "Open Sans", sans-serif;
+    transition: none; /* No hover effects */
+}
+
+/* Cancel Button - Target by ID (#) */
+#cancel-panic {
+    background-color: #D9D9D9; /* New background color */
+    color: #333;
+    border: none;
+    cursor: pointer;
+}
+
+/* Confirm Button - Keep targeting last button in group */
+.button-group button:last-of-type {
+    background-color: #004aad;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
 
 /* ===================== Topbar ===================== */
 
@@ -866,6 +1030,7 @@ footer {
 
 .footer-slogan {
   color: #1f1f1f;
+  padding-top: 10px;
 }
 
 
