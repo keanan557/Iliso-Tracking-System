@@ -46,11 +46,11 @@
           <ul class="nav-menu top-menu" id="topMenu">
             <li class="nav-link" id="addminButton">
               <i class="bx bx-user-plus"></i>
-              <span>Add New Admin</span>
+              <a href="Admin.html"> <span>View Admin</span></a>
             </li>
             <li class="nav-link" id="employeeButton">
               <i class="bx bx-user-plus"></i>
-              <span>Add New Employee</span>
+              <span>View Employee</span>
             </li>
           </ul>
 
@@ -99,24 +99,6 @@
           </ul>
       
       </aside>
-
-      <!-- ✍️ Admin Application Chamber -->
-      <div class="modal-overlay" id="adminModal" style="display: none">
-        <div class="modal-content">
-          <form action="" method="post">
-            <h2>Add Admin</h2>
-            <input type="text" placeholder="Username" id="adminName" />
-            <input type="text" placeholder="Email" id="adminEmail" />
-            <input type="phone" placeholder="Phone_number" id="adminNumber" />
-            <input type="password" placeholder="Password" id="adminPassword" />
-            <input type="password" placeholder="Main Password" id="adminMainPassword" />
-            <div class="button-group">
-              <button id="submitadmin">Submit</button>
-              <button id="canceladmin">Cancel</button>
-            </div>
-          </form>
-        </div>
-      </div>
 
       <!-- 🧑‍💼 Employee Entry Portal -->
       <div class="modal-overlay" id="employeeModal" style="display: none">

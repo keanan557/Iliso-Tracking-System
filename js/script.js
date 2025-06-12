@@ -281,3 +281,4 @@ submitemployeeButton.addEventListener('click', (event) => {
             alert('An error occurred while adding the employee.');
         });
 });
+
