@@ -5,6 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Employee Cards</title>
+
+  <!-- Auth.js file -->
+   <script src="assets/auth.js"></script>
   <style>
     /* Admin styles */
 
@@ -549,6 +552,10 @@
   </div>
 
   <script>
+
+     // Calling the token
+
+   checkAuth();
 
     const menuToggle = document.getElementById('menuToggle');
     const sidebar = document.getElementById('sidebar');

@@ -8,6 +8,9 @@
   <!-- Boxicons CDN for icons -->
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"  rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Auth.js file -->
+   <script src="assets/auth.js"></script>
   <style>
 /* Basic styling panic-dashboard */
         body {
@@ -473,6 +476,11 @@
   </div>
 </body>
 <script>
+
+  // Calling the token
+
+   checkAuth();
+
 document.addEventListener("DOMContentLoaded", function () {
     const panicButton = document.getElementById("panic-button");
     // Force panic button to stay ON

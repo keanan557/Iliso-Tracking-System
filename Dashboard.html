@@ -16,6 +16,9 @@
       rel="stylesheet"
     />
 
+    <!-- Auth.js file -->
+    <script src="assets/auth.js"></script>
+
     <!-- 🏷️ The crown jewel -->
     <title>Attendance Dashboard</title>
 
@@ -1188,7 +1191,9 @@
       <div class="main-board">
         <!-- 🙌 Welcome committee -->
         <div class="welcome-msg">
-          <h2>Welcome Tara 👋🏻</h2>
+          <!-- <h2>Welcome Tara 👋🏻</h2>   -->
+        <h2>Welcome, <span id="adminName"></span>!</h2>
+
         </div>
 
         <!-- ⚙️ Dashboard of suspicious metrics -->
@@ -1298,6 +1303,15 @@
       // 🎩 Magical Employee Dashboard Engine v1.0 🎩
       // WARNING: Contains traces of logic and mystery.
       // ==========================================
+
+       // Calling the token
+        checkAuth();
+
+      // Displaying each admin's name
+       const adminName = localStorage.getItem('adminName');
+        if (adminName) {
+      document.getElementById('adminName').textContent = adminName;
+      }
 
       // ~~~ CONTROL CENTER: DOM War Room ~~~
       const menuToggle = document.getElementById("menuToggle");
