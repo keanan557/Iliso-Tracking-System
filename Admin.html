@@ -505,254 +505,305 @@
       </ul>
 
     </aside>
+   <div class="main-content">
+  <h1 class="page-heading">Administration Information</h1>
 
-    <div class="main-content">
-      <!-- Page Heading -->
-      <h1 class="page-heading">Administration Information</h1></br>
-      <!-- Employee Cards -->
-      <div class="card-container" id="cardContainer"></div>
-      <div class="add-admin-container">
-        <button id="openAddAdminModal">➕ Add Admin</button>
-      </div>
+  <!-- Search Bar -->
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="Search admin by name, email, or phone..."
+    style="margin-bottom: 20px; padding: 8px; width: 100%; max-width: 400px;"
+  />
 
-      <!-- Add Admin Modal -->
-      <div id="addAdminModal" class="modal">
-        <div class="modal-content">
-          <form action="" id="addAdminForm" method="post">
-            <h2>Add New Admin</h2>
-            <input type="text" placeholder="Username" id="adminName" />
-            <input type="email" placeholder="Email" id="adminEmail" />
-            <input type="text" placeholder="Phone-number" id="admiPhone" />
-            <input type="password" placeholder="Password" id="adminPassword" />
-            <input type="password" placeholder="Main-Password" id="adminMainPassword" />
-            <button type="submit">Add</button>
-            <button type="button" id="cancelAddAdminModal">Cancel</button>
-          </form>
-        </div>
-      </div>
+  <div class="card-container" id="cardContainer"></div>
 
+  <button id="addAdminBtn">Add New Admin</button>
 
-      <!-- Edit Modal -->
-      <div id="editModal" class="modal">
-        <div class="modal-content">
-          <h2>Edit Admin</h2>
-          <input type="text" id="editName" placeholder="Full Name" />
-          <input type="email" id="editEmail" placeholder="Email" />
-          <input type="text" id="editPhone" placeholder="Contact No" />
-          <input type="text" id="editId" placeholder="Employee ID" />
-          <button class="save-btn" onclick="saveEdit()">Save</button>
-          <button class="cancel-btn" onclick="closeModal()">Cancel</button>
-
-        </div>
-      </div>
+  <!-- Add Admin Modal -->
+  <div id="addAdminModal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <h2>Add New Admin</h2>
+      <form id="addAdminForm">
+        <label>Username:<br />
+          <input type="text" name="username" required />
+        </label><br /><br />
+        <label>Email:<br />
+          <input type="email" name="email" required />
+        </label><br /><br />
+        <label>Phone Number:<br />
+          <input type="text" name="phone_number" required />
+        </label><br /><br />
+        <label>Password:<br />
+          <input type="password" name="password" required />
+        </label><br /><br />
+        <label>Main Admin Password:<br />
+          <input type="password" name="mainAdminPassword" required />
+        </label><br /><br />
+        <button type="submit">Submit</button>
+        <button type="button" id="cancelBtn">Cancel</button>
+      </form>
     </div>
   </div>
 
-  <script>
+  <!-- Edit Admin Modal -->
+  <div id="editAdminModal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <h2>Edit Admin</h2>
+      <form id="editAdminForm">
+        <input type="hidden" name="id" />
+        <label>Username:<br />
+          <input type="text" name="username" required />
+        </label><br /><br />
+        <label>Email:<br />
+          <input type="email" name="email" required />
+        </label><br /><br />
+        <label>Phone Number:<br />
+          <input type="text" name="phone_number" required />
+        </label><br /><br />
+        <label>Password:<br />
+          <input type="password" name="password" placeholder="Leave blank to keep current" />
+        </label><br /><br />
+        <label>Main Admin Password:<br />
+          <input type="password" name="mainAdminPassword" required />
+        </label><br /><br />
+        <button type="submit">Update</button>
+        <button type="button" id="editCancelBtn">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>
 
-    const menuToggle = document.getElementById('menuToggle');
-    const sidebar = document.getElementById('sidebar');
-    const profileButton = document.getElementById('profileButton');
-    const userInfoDropdown = document.getElementById('userInfoDropdown');
-    const logoutModal = document.getElementById('logoutModal');
+<script>
+  let allAdmins = [];
 
-    profileButton.addEventListener('click', () => {
-      const isVisible = userInfoDropdown.style.display === 'block';
-      userInfoDropdown.style.display = isVisible ? 'none' : 'block';
+  document.addEventListener("DOMContentLoaded", () => {
+    fetchAllAdmins();
+
+    const addAdminBtn = document.getElementById("addAdminBtn");
+    const addAdminModal = document.getElementById("addAdminModal");
+    const cancelBtn = document.getElementById("cancelBtn");
+    const addAdminForm = document.getElementById("addAdminForm");
+
+    const editAdminModal = document.getElementById("editAdminModal");
+    const editAdminForm = document.getElementById("editAdminForm");
+    const editCancelBtn = document.getElementById("editCancelBtn");
+
+    const searchInput = document.getElementById("searchInput");
+    searchInput.addEventListener("input", () => {
+      const searchTerm = searchInput.value.toLowerCase();
+      const filteredAdmins = allAdmins.filter((admin) =>
+        admin.username.toLowerCase().includes(searchTerm) ||
+        admin.email.toLowerCase().includes(searchTerm) ||
+        admin.phone_number.toLowerCase().includes(searchTerm)
+      );
+      renderCards(filteredAdmins);
     });
 
-    // ~~~ NINJA MOVE: Click Outside to Vanish ~~~
-    document.addEventListener('click', (e) => {
-      if (!profileButton.contains(e.target) && !userInfoDropdown.contains(e.target)) {
-        userInfoDropdown.style.display = 'none';
-      }
+    addAdminBtn.addEventListener("click", () => {
+      addAdminModal.style.display = "flex";
     });
 
-
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const addModal = document.getElementById("addAdminModal");
-      const openAddBtn = document.getElementById("openAddAdminModal");
-      const cancelAddBtn = document.getElementById("cancelAddAdminModal");
-      const addForm = document.querySelector("#addAdminModal form");
-
-      const logoutButton = document.getElementById("logoutButton");
-      const confirmLogoutBtn = document.getElementById("confirmLogoutBtn");
-      const cancelLogoutBtn = document.getElementById("cancelLogoutBtn");
-
-      if (openAddBtn) openAddBtn.addEventListener("click", () => addModal.style.display = "flex");
-      if (cancelAddBtn) cancelAddBtn.addEventListener("click", () => addModal.style.display = "none");
-
-      if (logoutButton) logoutButton.addEventListener("click", () => logoutModal.style.display = "flex");
-      if (confirmLogoutBtn) confirmLogoutBtn.addEventListener("click", () => {
-        logoutModal.innerHTML = `<div class="logout-modal"><p>✅ Logged out successfully!</p></div>`;
-        setTimeout(() => window.location.href = "login.html", 2000);
-      });
-      if (cancelLogoutBtn) cancelLogoutBtn.addEventListener("click", () => logoutModal.style.display = "none");
-
-      if (addForm) addForm.addEventListener("submit", submitNewAdmin);
+    cancelBtn.addEventListener("click", () => {
+      addAdminModal.style.display = "none";
+      addAdminForm.reset();
     });
 
-
-
-
-    // ========= Modal Handling ========= //
-    document.addEventListener("DOMContentLoaded", () => {
-      const addModal = document.getElementById("addAdminModal");
-      const openAddBtn = document.getElementById("openAddAdminModal");
-      const cancelAddBtn = document.getElementById("cancelAddAdminModal");
-      const addForm = document.querySelector("#addAdminModal form");
-
-      openAddBtn.addEventListener("click", () => {
-        addModal.style.display = "flex";
-      });
-
-      cancelAddBtn.addEventListener("click", () => {
-        addModal.style.display = "none";
-      });
-
-      addForm.addEventListener("submit", submitNewAdmin);
+    editCancelBtn.addEventListener("click", () => {
+      editAdminModal.style.display = "none";
+      editAdminForm.reset();
     });
 
-    // ========= Employee Array ========= //
-    let employees = [
-      {
-        name: "TARA SNELL",
-        email: "Tarasnell@lifechoices.co.za",
-        contact: "082 633 9613",
-        id: "12345",
-        avatar: "/assets/Tara.png"
-      },
-      {
-        name: "Keziah Petersen",
-        email: "keziahpetersen@lifechoices.co.za",
-        contact: "082 633 9613",
-        id: "09876",
-        avatar: "/assets/Keziah.png"
-      },
-      {
-        name: "Maxine Oliver",
-        email: "maxine@lifechoices.co.za",
-        contact: "0216964157",
-        id: "80988",
-        avatar: "/assets/Maxine.png"
-      }
-    ];
+    addAdminForm.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-    // ========= Submit New Admin ========= //
-    function submitNewAdmin(event) {
-      event.preventDefault(); // stop form from reloading the page
+      const formData = new FormData(addAdminForm);
+      const data = {
+        username: formData.get("username"),
+        email: formData.get("email"),
+        phone_number: formData.get("phone_number"),
+        password: formData.get("password"),
+        mainAdminPassword: formData.get("mainAdminPassword"),
+      };
 
-      const name = document.getElementById('adminName').value.trim();
-      const email = document.getElementById('adminEmail').value.trim();
-      const phone = document.getElementById('admiPhone').value.trim();
-      const password = document.getElementById('adminPassword').value.trim();
-      const mainPassword = document.getElementById('adminMainPassword').value.trim();
+      fetch("http://localhost/attendance/php-backend/user.php?action=signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          if (result.success) {
+            alert("Admin added successfully!");
+            addAdminModal.style.display = "none";
+            addAdminForm.reset();
+            fetchAllAdmins();
+          } else {
+            alert("Failed to add admin: " + (result.message || "Unknown error"));
+          }
+        })
+        .catch((err) => {
+          console.error("Error adding admin:", err);
+          alert("Error adding admin. Check console.");
+        });
+    });
 
-      if (!name || !email || !phone || !password || !mainPassword) {
-        alert("Please fill in all fields.");
-        return;
-      }
+    editAdminForm.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-      // Add to employees array
-      employees.push({
-        name,
-        email,
-        contact: phone,
-        id: Math.floor(Math.random() * 100000).toString(), // simple random ID
-        avatar: "" // default no avatar
-      });
+      const formData = new FormData(editAdminForm);
+      const id = formData.get("id");
+      const data = {
+        username: formData.get("username"),
+        email: formData.get("email"),
+        phone_number: formData.get("phone_number"),
+        ...(formData.get("password") ? { password: formData.get("password") } : {}),
+        mainAdminPassword: formData.get("mainAdminPassword"),
+      };
 
-      // Re-render cards
-      reloadCards();
+      fetch(`http://localhost/attendance/php-backend/user.php?action=update&id=${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          if (result.success) {
+            alert("Admin updated successfully!");
+            editAdminModal.style.display = "none";
+            editAdminForm.reset();
+            fetchAllAdmins();
+          } else {
+            alert("Failed to update admin: " + (result.message || "Unknown error"));
+          }
+        })
+        .catch((err) => {
+          console.error("Error updating admin:", err);
+          alert("Error updating admin. Check console.");
+        });
+    });
+  });
 
-      // Close modal and reset form
-      document.getElementById("addAdminModal").style.display = "none";
-      event.target.reset();
-    }
+  function fetchAllAdmins() {
+    fetch("http://localhost/attendance/php-backend/user.php?action=getAll")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.admins && Array.isArray(data.admins)) {
+          allAdmins = data.admins;
+          renderCards(allAdmins);
+        } else {
+          console.error("No admins data found", data);
+        }
+      })
+      .catch((err) => console.error("Error fetching admins:", err));
+  }
 
-    // ========= Render Cards ========= //
+  function renderCards(admins) {
     const container = document.getElementById("cardContainer");
+    container.innerHTML = "";
 
-    function reloadCards() {
-      container.innerHTML = "";
-      employees.forEach((emp, index) => {
-        const card = document.createElement("div");
-        card.className = "card";
+    admins.forEach((admin) => {
+      const card = document.createElement("div");
+      card.className = "card";
 
-        const avatarElement = emp.avatar
-          ? `<img src="${emp.avatar}" alt="${emp.name}" class="avatar">`
-          : `<div class="initial">${emp.name.charAt(0)}</div>`;
+      const avatarElement = `<div class="initial">${admin.username.charAt(0).toUpperCase()}</div>`;
 
-        card.innerHTML = `
-      ${avatarElement}
-      <h3>${emp.name}</h3>
-      <p><strong>Email:</strong><br>${emp.email}</p>
-      <p><strong>Contact No:</strong><br>${emp.contact}</p>
-      <p><strong>Employee ID:</strong><br>${emp.id}</p>
-      <button class="menu-button" onclick="toggleMenu(this)">⋮</button>
-      <div class="menu">
-        <button onclick="editEmployee(${index})">Edit</button>
-        <button onclick="deleteEmployee(${index})">Delete</button>
-      </div>
-    `;
-        container.appendChild(card);
+      const dotMenuBtn = document.createElement("button");
+      dotMenuBtn.className = "dot-menu-btn";
+      dotMenuBtn.innerHTML = "&#8942;";
+      dotMenuBtn.setAttribute("aria-label", "Open menu");
+
+      const menu = document.createElement("div");
+      menu.className = "dot-menu";
+      menu.style.display = "none";
+
+      const editOption = document.createElement("div");
+      editOption.className = "dot-menu-option";
+      editOption.textContent = "Edit";
+      editOption.style.cursor = "pointer";
+
+      const deleteOption = document.createElement("div");
+      deleteOption.className = "dot-menu-option";
+      deleteOption.textContent = "Delete";
+      deleteOption.style.cursor = "pointer";
+
+      menu.appendChild(editOption);
+      menu.appendChild(deleteOption);
+
+      card.innerHTML = `
+        ${avatarElement}
+        <h3>${admin.username}</h3>
+        <p><strong>Email:</strong><br>${admin.email}</p>
+        <p><strong>Contact No:</strong><br>${admin.phone_number}</p>
+        <p><strong>Employee ID:</strong><br>${admin.id}</p>
+      `;
+      card.appendChild(dotMenuBtn);
+      card.appendChild(menu);
+
+      dotMenuBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        document.querySelectorAll(".dot-menu").forEach((m) => {
+          if (m !== menu) m.style.display = "none";
+        });
+        menu.style.display = menu.style.display === "block" ? "none" : "block";
       });
-    }
 
-    reloadCards();
-
-    // ========= Toggle Dropdown Menu ========= //
-    function toggleMenu(button) {
-      const menu = button.nextElementSibling;
-      document.querySelectorAll(".menu").forEach(m => {
-        if (m !== menu) m.style.display = "none";
+      document.addEventListener("click", () => {
+        menu.style.display = "none";
       });
-      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-    }
 
-    // ========= Edit & Delete Logic ========= //
-    let editingIndex = null;
+      editOption.addEventListener("click", () => {
+        openEditModal(admin);
+        menu.style.display = "none";
+      });
 
-    function editEmployee(index) {
-      editingIndex = index;
-      const emp = employees[index];
-      document.getElementById("editName").value = emp.name;
-      document.getElementById("editEmail").value = emp.email;
-      document.getElementById("editPhone").value = emp.contact;
-      document.getElementById("editId").value = emp.id;
-      document.getElementById("editModal").style.display = "flex";
-    }
+      deleteOption.addEventListener("click", () => {
+        if (confirm(`Are you sure you want to delete admin "${admin.username}"?`)) {
+          deleteAdmin(admin.id);
+        }
+        menu.style.display = "none";
+      });
 
-    function saveEdit() {
-      if (editingIndex !== null) {
-        employees[editingIndex].name = document.getElementById("editName").value;
-        employees[editingIndex].email = document.getElementById("editEmail").value;
-        employees[editingIndex].contact = document.getElementById("editPhone").value;
-        employees[editingIndex].id = document.getElementById("editId").value;
-        document.getElementById("editModal").style.display = "none";
-        reloadCards();
-      }
-    }
-
-    function deleteEmployee(index) {
-      employees.splice(index, 1);
-      reloadCards();
-    }
-
-    function closeModal() {
-      document.getElementById("editModal").style.display = "none";
-      editingIndex = null;
-    }
-
-    // ========= Close menus when clicking outside ========= //
-    document.addEventListener("click", function (e) {
-      if (!e.target.matches(".menu-button")) {
-        document.querySelectorAll(".menu").forEach(menu => menu.style.display = "none");
-      }
+      container.appendChild(card);
     });
+  }
 
-  </script>
+  function openEditModal(admin) {
+    const editAdminModal = document.getElementById("editAdminModal");
+    const editAdminForm = document.getElementById("editAdminForm");
+
+    editAdminForm.id.value = admin.id;
+    editAdminForm.username.value = admin.username;
+    editAdminForm.email.value = admin.email;
+    editAdminForm.phone_number.value = admin.phone_number;
+    editAdminForm.password.value = "";
+    editAdminForm.mainAdminPassword.value = "";
+
+    editAdminModal.style.display = "flex";
+  }
+
+  function deleteAdmin(id) {
+    fetch(`http://localhost/attendance/php-backend/user.php?action=delete&id=${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.success) {
+          alert("Admin deleted successfully!");
+          fetchAllAdmins();
+        } else {
+          alert("Failed to delete admin: " + (result.message || "Unknown error"));
+        }
+      })
+      .catch((err) => {
+        console.error("Error deleting admin:", err);
+        alert("Error deleting admin. Check console.");
+      });
+  }
+</script>
+
+
+
 </body>
 
 </html>
