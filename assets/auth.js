@@ -9,7 +9,7 @@ function checkAuth() {
     return;
   }
 
-  fetch('http://localhost/Backend/validate-token.php', {
+  fetch('http://localhost/attendance/Backend/validate-token.php', {
     method: 'GET',
     headers: {
       'Authorization': 'Bearer ' + token
