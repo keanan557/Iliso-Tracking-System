@@ -13,9 +13,6 @@ switch ($requestMethod) {
         $action = $data['action'] ?? '';
 
         switch ($action) {
-            case 'login':
-                handleLogin($data);
-                break;
             case 'add_employee':
                 handleAddEmployee($data);
                 break;
@@ -41,23 +38,6 @@ switch ($requestMethod) {
         break;
 }
 
-// Function to handle login
-function handleLogin($data) {
-    global $pdo;
-    $email = $data['email'] ?? '';
-    $password = $data['password'] ?? '';
-
-    $stmt = $pdo->prepare("SELECT * FROM admins WHERE email = :email");
-    $stmt->execute(['email' => $email]);
-    $admin = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if ($admin && password_verify($password, $admin['password'])) {
-        echo json_encode(['success' => true]);
-    } else {
-        http_response_code(401);
-        echo json_encode(['success' => false, 'message' => 'Invalid ID or password.']);
-    }
-}
 
 // Function to fetch employees
 function handleFetchEmployees() {

@@ -2,12 +2,14 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Cards</title>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <style>
-        /* Admin styles */
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Employee Cards</title>
+
+  <!-- Auth.js file -->
+   <script src="assets/auth.js"></script>
+  <style>
+    /* Admin styles */
 
         body {
             font-family: 'Inter', 'Open Sans', sans-serif;
@@ -556,19 +558,22 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const profileButton = document.getElementById('profileButton');
-            const userInfoDropdown = document.getElementById('userInfoDropdown');
-            const logoutModal = document.getElementById('logoutModal');
-            const logoutButton = document.getElementById("logoutButton");
-            const confirmLogoutBtn = document.getElementById("confirmLogoutBtn");
-            const cancelLogoutBtn = document.getElementById("cancelLogoutBtn");
+<script>
 
-            const addAdminModal = document.getElementById("addAdminModal");
-            const openAddAdminModalBtn = document.getElementById("openAddAdminModal");
-            const cancelAddAdminModalBtn = document.getElementById("cancelAddAdminModal");
-            const addAdminForm = document.getElementById("addAdminForm");
+  
+     // Calling the token
+
+   checkAuth();
+   
+  let allAdmins = [];
+
+  document.addEventListener("DOMContentLoaded", () => {
+    fetchAllAdmins();
+
+    const addAdminBtn = document.getElementById("addAdminBtn");
+    const addAdminModal = document.getElementById("addAdminModal");
+    const cancelBtn = document.getElementById("cancelBtn");
+    const addAdminForm = document.getElementById("addAdminForm");
 
             const editModal = document.getElementById("editModal");
             const saveEditBtn = editModal.querySelector(".save-btn");

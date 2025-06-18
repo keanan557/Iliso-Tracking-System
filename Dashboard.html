@@ -43,6 +43,32 @@
             padding: 0;
             box-sizing: border-box;
         }
+  <head>
+    <!-- 🤖 Robot whispering: Behold, the sacred character and scaling rituals -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- 🧱 A secret society of icons -->
+    <link
+      href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Auth.js file -->
+    <script src="assets/auth.js"></script>
+
+    <!-- 🏷️ The crown jewel -->
+    <title>Attendance Dashboard</title>
+
+    <style>
+      * {
+        font-family: "Inter", "Open Sans", sans-serif;
+        box-sizing: border-box;
+      }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -1138,6 +1164,69 @@
                             </tbody>
                     </table>
                 </div>
+      <!-- 📊 The Throne Room: Where data bows before you -->
+      <div class="main-board">
+        <!-- 🙌 Welcome committee -->
+        <div class="welcome-msg">
+          <!-- <h2>Welcome Tara 👋🏻</h2>   -->
+        <h2>Welcome, <span id="adminName"></span>!</h2>
+
+        </div>
+
+        <!-- ⚙️ Dashboard of suspicious metrics -->
+        <section class="metrics-dashboard">
+          <div class="metric-box" id="onsiteBox">
+            <h3>On-Site</h3>
+            <p class="count" id="onsiteCount">0</p>
+          </div>
+          <div class="metric-box" id="offsiteBox">
+            <h3>Off-Site</h3>
+            <p class="count" id="offsiteCount">0</p>
+          </div>
+          <div class="metric-box" id="unmarkedBox">
+            <h3>Unmarked</h3>
+            <p class="count" id="unmarkedCount">0</p>
+          </div>
+        </section>
+
+        <!-- 📋 Employee Intel Database -->
+        <section class="active-employees">
+          <div class="search-contain">
+            <h3>Active Employees</h3>
+            <div class="search-bar">
+              <div class="search-icon-input">
+                <i class="bx bx-search-alt search-icon"></i>
+                <input
+                  type="text"
+                  class="search-box"
+                  placeholder="Search"
+                  id="searchBox"
+                />
+              </div>
+              <select id="sortByStatus">
+                <option value="all">Sort by: All</option>
+                <option value="On Site">Sort by: On Site</option>
+                <option value="Off Site">Sort by: Off Site</option>
+              </select>
+            </div>
+          </div>
+          --
+          <!-- 🗂️ The Unholy Table of Truth -->
+          <div class="table-container" id="tableContainer">
+            <table>
+              <thead>
+                <tr>
+                  <th>Employee Name</th>
+                  <th>Department</th>
+                  <th>Clock In Time</th>
+                  <th>Email</th>
+                  <th>Employee ID</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="employeeTableBody"></tbody>
+            </table>
+          </div>
 
                 <div class="panel-footer">
                     <div class="pagination-info">
@@ -1163,6 +1252,95 @@
     </div>
 
     <script>
+      // ==========================================
+      // 🎩 Magical Employee Dashboard Engine v1.0 🎩
+      // WARNING: Contains traces of logic and mystery.
+      // ==========================================
+
+       // Calling the token
+        checkAuth();
+
+      // Displaying each admin's name
+       const adminName = localStorage.getItem('adminName');
+        if (adminName) {
+      document.getElementById('adminName').textContent = adminName;
+      }
+
+      // ~~~ CONTROL CENTER: DOM War Room ~~~
+      const menuToggle = document.getElementById("menuToggle");
+      const sidebar = document.getElementById("sidebar");
+      const profileButton = document.getElementById("profileButton");
+      const userInfoDropdown = document.getElementById("userInfoDropdown");
+      const adminModal = document.getElementById("adminModal");
+      const employeeModal = document.getElementById("employeeModal");
+      const logoutModal = document.getElementById("logoutModal");
+      const submitadminButton = document.getElementById("submitadmin");
+      const canceladminButton = document.getElementById("canceladmin");
+      const submitemployeeButton = document.getElementById("submitemployee");
+      const cancelemployeeButton = document.getElementById("cancelemployee");
+      const employeeTableBody = document.getElementById("employeeTableBody");
+      const pagination = document.getElementById("pagination");
+      const searchBox = document.getElementById("searchBox");
+      const sortByStatus = document.getElementById("sortByStatus");
+      const dataInfo = document.getElementById("dataInfo");
+
+      const errorMessageElement = document.getElementById("error-message"); // Error message display
+
+      // ~~~ BACKSTAGE: Tracking the Unsuspecting ~~~
+      let allEmployees = [];
+      let currentPage = 1;
+      const pageSize = 5;
+
+      // ~~~ OPERATION: Slide the Sidebar (Shhh!) ~~~
+      menuToggle.addEventListener("click", () => {
+        sidebar.classList.toggle("mobile-open"); // Click to reveal classified material.
+      });
+
+      // ~~~ PROFILE POP-UP TRAP ~~~
+      profileButton.addEventListener("click", () => {
+        const isVisible = userInfoDropdown.style.display === "block";
+        userInfoDropdown.style.display = isVisible ? "none" : "block";
+      });
+
+      // ~~~ NINJA MOVE: Click Outside to Vanish ~~~
+      document.addEventListener("click", (e) => {
+        if (
+          !profileButton.contains(e.target) &&
+          !userInfoDropdown.contains(e.target)
+        ) {
+          userInfoDropdown.style.display = "none";
+        }
+      });
+
+      // ~~~ DATA FETCHED FROM THE MATRIX ~~~
+      fetch("./assets/employees_data.json")
+        .then((res) => res.json())
+        .then((data) => {
+          allEmployees = data.allEmployees || [];
+          renderEmployeeTable(); // May or may not summon unicorns.
+        })
+        .catch((err) => console.error("Error loading employees:", err));
+
+      // ~~~ THE GREAT TABLE SUMMONING ~~~
+      function renderEmployeeTable() {
+        employeeTableBody.innerHTML = ""; // Goodbye old truths.
+
+        const searchTerm = searchBox.value.toLowerCase();
+        const selectedStatus = sortByStatus.value;
+
+        const filteredEmployees = allEmployees.filter((emp) => {
+          const matchSearch =
+            emp.name.toLowerCase().includes(searchTerm) ||
+            emp.department.toLowerCase().includes(searchTerm) ||
+            emp.email.toLowerCase().includes(searchTerm) ||
+            emp.id.toLowerCase().includes(searchTerm);
+          const matchStatus =
+            selectedStatus === "all" || emp.status === selectedStatus;
+          return matchSearch && matchStatus;
+        });
+
+        const start = (currentPage - 1) * pageSize;
+        const paginated = filteredEmployees.slice(start, start + pageSize);
         // JavaScript for dashboard interactivity
         document.addEventListener('DOMContentLoaded', () => {
             // Get references to DOM elements

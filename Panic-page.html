@@ -15,6 +15,10 @@
         padding: 0;
         background-color: #fff;
     }
+
+    .expand-btn{
+      display: none;
+    }
     .container {
         display: flex;
         flex-direction: row;
@@ -313,6 +317,181 @@
       color: #0f4392;
       font-weight: 600;
     }
+
+    /* responsiveness */
+    
+    /* tablet screens */
+    @media (max-width:768px){
+
+
+      .brand img{
+        width: 60px;
+      }
+     
+      
+
+  /* Make expand button visible on mobile */
+  #expand-btn {
+      display: flex; /* Show button on mobile */
+  }
+
+ 
+
+    .card{
+      width: 250px;
+    }
+
+
+
+    }
+
+    /* mobile */
+    @media (max-width:480px){
+
+
+      .brand img{
+        width: 60px;
+      }
+     
+      
+
+  /* Make expand button visible on mobile */
+  #expand-btn {
+      display: flex; /* Show button on mobile */
+  }
+
+  .cards{
+    width: 280px;
+    /* border: 2px solid red; */
+    margin-left: -70px;
+  }
+
+    .card{
+      width: 200px;
+    }
+
+  /* Default sidebar state on mobile (starts COLLAPSED) */
+  .sidebar {
+      width: 60px; /* Mobile default is collapsed */
+      padding: 1rem 0.5rem;
+      /* border: 2px solid red; */
+  }
+
+
+  /* Styles for the sidebar when it is ACTIVELY EXPANDED on mobile (toggled by JS) */
+  .sidebar.expanded-mobile { /* Using a new class for clarity */
+      width: 250px; /* Expanded width on mobile */
+      /* padding: 5rem;  */
+  }
+  .sidebar.expanded-mobile .sidebar-header .brand img {
+      max-height: 50px; /* Original size */
+      opacity: 1; /* Fully visible */
+  }
+  .sidebar.expanded-mobile .nav-link span {
+      display: inline; /* Show text */
+  }
+  .sidebar.expanded-mobile .nav-link {
+      justify-content: flex-start; /* Align content to start */
+      padding: 12px 15px;
+  }
+  .sidebar.expanded-mobile .nav-link i {
+      margin-right: 12px; /* Original icon margin */
+  }
+  .sidebar.expanded-mobile .profile-dropdown .nav-link img {
+      margin-right: 10px; /* Original image margin */
+  }
+  .sidebar.expanded-mobile .bottom-menu .nav-link {
+      justify-content: flex-start;
+      padding: 12px 15px;
+  }
+  .sidebar.expanded-mobile #expand-btn {
+      transform: rotate(0deg); /* Button points right (expanded) */
+  }
+
+  /* Shift main content when sidebar is expanded on mobile */
+  .container .sidebar.expanded-mobile + .main-content {
+      margin-left: 0px; /* Shift main content for expanded sidebar */
+  }
+
+  /* Styles for items when sidebar is COLLAPSED on mobile (default state or when toggled to collapsed) */
+  /* This uses :not(.expanded-mobile) to target when the sidebar is NOT expanded */
+  .sidebar:not(.expanded-mobile) .sidebar-header .brand img {
+      max-height: 30px;
+      opacity: 0.8;
+  }
+  .sidebar:not(.expanded-mobile) .nav-link span {
+      display: none; /* Hide text */
+  }
+  .sidebar:not(.expanded-mobile) .nav-link {
+      justify-content: center; /* Center icon */
+      padding: 12px 0;
+  }
+  .sidebar:not(.expanded-mobile) .nav-link i {
+      margin-right: 0; /* Remove icon margin */
+  }
+  .sidebar:not(.expanded-mobile) .profile-dropdown .nav-link img {
+      margin-right: 0;
+  }
+  .sidebar:not(.expanded-mobile) .bottom-menu .nav-link {
+      justify-content: center;
+      padding: 12px 0;
+  }
+  .sidebar:not(.expanded-mobile) #expand-btn {
+      transform: rotate(180deg); /* Button points left (collapsed) */
+  }
+
+  /* Styles for the expand-btn (outside media query - for desktop) */
+#expand-btn {
+    
+    /* position: absolute;  */
+    /* top: 1rem; */
+    /* right: 1rem; */
+    background: #0f4392;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    justify-content: center; /* Use flexbox for centering content inside */
+    align-items: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+     transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.2s ease;
+    z-index: 10;
+    outline: none;
+}
+#expand-btn:hover {
+    background-color: #0c3577;
+}
+
+/* ADD THIS NEW BLOCK: */
+#expand-btn:active {
+    background-color: #082855; /* Darker when clicked */
+    box-shadow: 0 0 0 5px rgba(15, 67, 146, 0.3); /* Subtle blue glow */
+    transform: scale(0.95); /* Shrink slightly */
+}
+
+/* Styles for the expand-btn inside the mobile media query */
+
+    /* Make expand button visible on mobile */
+    #expand-btn {
+        display: flex; /* Show button on mobile */
+    }
+
+    /* Adjust button rotation based on sidebar state (collapsed/expanded) */
+    .sidebar:not(.expanded-mobile) #expand-btn {
+        transform: rotate(180deg); /* Button points left (collapsed mini-sidebar) */
+    }
+    .sidebar.expanded-mobile #expand-btn {
+        transform: rotate(0deg); /* Button points right (expanded overlay) */
+    }
+
+  
+
+
+    }
+
+
   </style>
 </head>
 <body>
@@ -324,15 +503,17 @@
   </div>
 
   <div class="container">
-     <aside class="sidebar">
+     <aside class="sidebar" id="mySidebar">
+      <button id="expand-btn">>></button>
       <div class="sidebar-header">
         <div class="brand">
           <img src="https://github.com/luthandodake10111/iliso--frontend-images-/raw/main/iliso%20logo.png" alt="Logo" />
         </div>
       </div>
       <ul class="nav-menu top-menu">
-        <li class="nav-link"><i class="bx bx-user-plus"></i><span>Add New Admin</span></li>
-        <li class="nav-link"><i class="bx bx-user-plus"></i><span>Add New Employee</span></li>
+        <!-- <li class="nav-link"><i class="bx bx-user-plus"></i><span>Add New Admin</span></li> -->
+        <!-- <li class="nav-link"><i class="bx bx-user-plus"></i><span>Add New Employee</span></li> -->
+         <li class="nav-link"><i class="bx bx-home"></i><span>Dashboard</span></li>
       </ul>
       <div class="profile-dropdown">
         <button class="nav-link">
@@ -346,7 +527,7 @@
     </aside>
 
     <!-- Main Content -->
-    <main class="main-content">
+    <main class="main-content" id="mainContent">
       <header class="header">
         <h1>Safety Status</h1>
       </header>
@@ -510,5 +691,161 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
   </script>
+  <script>
+    // Flag to track if the sidebar is expanded on mobile
+    let isSidebarExpandedOnMobile = false; // Initial state for mobile: collapsed by default
+
+    // Function to apply sidebar state based on screen size
+    function applySidebarState() {
+        const sidebar = document.getElementById('mySidebar');
+        const toggleButton = document.getElementById('expand-btn');
+        const mainContent = document.getElementById('mainContent');
+
+        if (!sidebar || !toggleButton || !mainContent) {
+            console.error("Sidebar elements not found. Check IDs: 'mySidebar', 'expand-btn', 'mainContent'.");
+            return;
+        }
+
+        if (window.innerWidth <= 600) {
+            // --- Mobile View ---
+            toggleButton.style.display = 'flex'; // Show the button on mobile
+
+            if (isSidebarExpandedOnMobile) {
+                // If the sidebar should be expanded on mobile
+                sidebar.classList.add('expanded-mobile');
+                toggleButton.innerHTML = '&gt;&gt;'; // Button points right (expanded)
+            } else {
+                // If the sidebar should be collapsed on mobile (default)
+                sidebar.classList.remove('expanded-mobile');
+                toggleButton.innerHTML = '&lt;&lt;'; // Button points left (collapsed)
+            }
+            // The .main-content shifting is handled by CSS based on .expanded-mobile,
+            // so no direct JS class toggle for mainContent.classList.toggle('shifted') here.
+
+        } else {
+            // --- Desktop View (Screen > 600px) ---
+            sidebar.classList.remove('expanded-mobile'); // Ensure no mobile-specific classes
+            toggleButton.style.display = 'none'; // Hide the button on desktop
+            toggleButton.innerHTML = '&gt;&gt;'; // Reset button text for next mobile entry
+            isSidebarExpandedOnMobile = false; // Reset state for when re-entering mobile view
+            // Sidebar and main-content sizes are handled by global CSS for desktop
+        }
+    }
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // --- Panic Button Logic ---
+        const panicBtn = document.getElementById('panicButton');
+        if (panicBtn) {
+            panicBtn.addEventListener('click', () => {
+                panicBtn.classList.toggle('on');
+                if (panicBtn.classList.contains('on')) {
+                    console.log("Panic Button ON");
+                } else {
+                    console.log("Panic Button OFF");
+                }
+            });
+        } else {
+            console.warn("Panic button with ID 'panicButton' not found.");
+        }
+
+
+        // --- Logout Modal Logic ---
+        const logoutBtn = document.querySelector('.bottom-menu .nav-link'); // Corrected selector for Logout button
+        const logoutModal = document.getElementById('logoutModal');
+        const confirmLogout = document.getElementById('confirmLogout');
+        const cancelLogout = document.getElementById('cancelLogout');
+
+        if (logoutBtn && logoutModal && confirmLogout && cancelLogout) {
+            logoutBtn.addEventListener('click', () => {
+                logoutModal.style.display = 'flex';
+            });
+
+            cancelLogout.addEventListener('click', () => {
+                logoutModal.style.display = 'none';
+            });
+
+            confirmLogout.addEventListener('click', () => {
+                logoutModal.style.display = 'none';
+                alert('Logged out!');
+                // Add your logout logic here
+            });
+
+            logoutModal.addEventListener('click', (e) => {
+                if (e.target === logoutModal) {
+                    logoutModal.style.display = 'none';
+                }
+            });
+        } else {
+            console.warn("One or more logout modal elements not found (logoutBtn, logoutModal, confirmLogout, cancelLogout).");
+        }
+
+
+        // --- Person Counters Logic ---
+        function updateCounters() {
+            const buttons = document.querySelectorAll('.person button');
+            let safe = 0;
+            let notSafe = 0;
+
+            buttons.forEach(button => {
+                if (button.classList.contains('not-safe')) {
+                    notSafe++;
+                } else {
+                    safe++;
+                }
+            });
+
+            const safeCountElement = document.getElementById('safeCount');
+            const notSafeCountElement = document.getElementById('notSafeCount');
+
+            if (safeCountElement) safeCountElement.textContent = safe;
+            if (notSafeCountElement) notSafeCountElement.textContent = notSafe;
+        }
+
+        // Event listeners for person buttons
+        document.querySelectorAll('.person button').forEach(button => {
+            button.addEventListener('click', () => {
+                button.classList.toggle('not-safe');
+                button.textContent = button.classList.contains('not-safe') ? 'Not Safe' : 'Safe';
+                updateCounters();
+            });
+        });
+
+        updateCounters(); // Initial count on load
+
+
+        // --- Sidebar Expand/Collapse Logic ---
+        const sidebar = document.getElementById('mySidebar');
+        const toggleButton = document.getElementById('expand-btn');
+        const mainContent = document.getElementById('mainContent');
+
+        if (sidebar && toggleButton && mainContent) {
+            // Apply initial sidebar state based on current screen size
+            applySidebarState();
+
+            // Event listener for the toggle button (only acts on mobile)
+            toggleButton.addEventListener('click', function() {
+                if (window.innerWidth <= 600) {
+                    // Toggle the 'expanded-mobile' class on the sidebar
+                    sidebar.classList.toggle('expanded-mobile');
+                    isSidebarExpandedOnMobile = sidebar.classList.contains('expanded-mobile');
+
+                    // Update button text based on current state
+                    if (isSidebarExpandedOnMobile) {
+                        toggleButton.innerHTML = '&gt;&gt;'; // Points right (expanded)
+                    } else {
+                        toggleButton.innerHTML = '&lt;&lt;'; // Points left (collapsed)
+                    }
+                }
+            });
+
+            // Handle window resize events
+            window.addEventListener('resize', applySidebarState);
+
+        } else {
+            console.error("Error: Sidebar elements not found for expand/collapse functionality. Check IDs: 'mySidebar', 'expand-btn', 'mainContent'.");
+        }
+    }); // End of DOMContentLoaded
+</script>
 </body>
 </html>
