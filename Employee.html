@@ -4,13 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css"  rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"  rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet" />
     <title>Employee Information</title>
 
     <style>
       /* === Sidebar Styles === */
-
 
       .sidebar {
         width: 200px;
@@ -21,13 +19,20 @@
         left: 0;
         display: flex;
         flex-direction: column;
-        padding: 20px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        padding: 1rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       }
 
       .sidebar-header img {
-        width: 100%;
-        max-height: 50px;
+        align-items: center;
+        margin-right: 20px;
+        margin-bottom: 50px;
+        /* margin: 0 auto; */
+        width: 80%;
+      }
+
+      .flex-spacer {
+        flex-grow: 1;
       }
 
       .nav-menu {
@@ -35,33 +40,33 @@
         padding: 0;
         margin: 20px 0;
       }
-       .nav-link.active {
-  background-color: #00459f;
-  color: blue;
-  font-weight: bold;
-}
-.nav-link {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  background-color: #00459f; /* Blue background */
-  color: white; /* White text */
-  transition: background-color 0.3s ease;
-}
+      .nav-link.active {
+        background-color: #00459f;
+        color: blue;
+        /* font-weight: bold; */
+      }
+      .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 18px;
+        border-radius: 6px;
+        cursor: pointer;
+        background-color: #00459f; /* Blue background */
+        color: white; /* White text */
+        transition: background-color 0.3s ease;
+      }
 
-/* Optional: Hover effect */
-.nav-link:hover {
-  background-color: #3367D6; /* Lighter blue on hover */
-}
+      /* Optional: Hover effect */
+      .nav-link:hover {
+        background-color: #3367d6; /* Lighter blue on hover */
+      }
 
-/* Optional: Active state styling */
-.nav-link.active {
-  background-color: #003370; /* Darker blue for active item */
-  font-weight: bold;
-}
+      /* Optional: Active state styling */
+      .nav-link.active {
+        background-color: #003370; /* Darker blue for active item */
+        /* font-weight: bold; */
+      }
 
       .logout-modal {
         background: white;
@@ -79,15 +84,18 @@
       .modal-overlay {
         display: none;
         position: fixed;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background-color: rgba(0,0,0,0.5);
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
         z-index: 1000;
       }
 
       .button-group button {
         padding: 10px 20px;
         margin: 10px;
-        font-weight: bold;
+        /* font-weight: bold; */
         border: none;
         border-radius: 6px;
         cursor: pointer;
@@ -107,9 +115,13 @@
       .modal-overlay #employeeModal {
         display: none;
         position: fixed;
-        top: 0; left: 0; right: 0; bottom: 0;
-        width: 100%; height: 100%;
-        background-color: rgba(0,0,0,0.5);
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
         z-index: 1000;
         overflow: auto;
       }
@@ -120,7 +132,7 @@
         padding: 25px;
         width: 90%;
         max-width: 500px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         margin: auto;
         position: absolute;
         top: 50%;
@@ -137,7 +149,8 @@
         right: 15px;
       }
 
-      form input, form select {
+      form input,
+      form select {
         padding: 10px;
         border: 1px solid #ddd;
         border-radius: 4px;
@@ -171,20 +184,68 @@
         border: 1px solid #ddd;
       }
 
+
+       /* Pagination Styles */
+    .pagination {
+      display: flex;
+      gap: 10px;
+      align-items: right;
+      justify-content: flex-end;
+      margin-top: 24px;
+      /* font-family: "Poppins", sans-serif; */
+      font-size: 14px;
+      color: #000;
+    }
+
+    .pagination nav {
+      display: flex;
+      gap: 6px;
+    }
+
+    .pagination a {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 4px;
+      border: 1px solid #e5e7eb;
+      background-color: #f9fafb;
+      color: #0f4392;
+      text-decoration: none;
+      font-weight: 500;
+      min-width: 25px;
+      text-align: center;
+      gap: 10px;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .pagination a:hover {
+      background-color: #e5e7eb;
+    }
+
+    .pagination a.active {
+      background-color: #0f4392;
+      color: #fff;
+      border-color: #0f4392;
+    }
+
       /* === Main Content === */
       .dashboard-container {
         display: flex;
         min-height: 100vh;
+         background-color: #99999900;
       }
 
       .main-board {
-        margin-left: 250px;
+        margin-left: 230px;
         padding: 20px;
         width: calc(100% - 250px);
+        /* padding: 30px; */
       }
 
       .welcome-msg h2 {
+        font-size: x-large;
         margin: 0;
+        text-align: center;
+        padding: 20px;
       }
 
       .search-contain {
@@ -194,53 +255,53 @@
         margin-top: 20px;
       }
 
-/* === Search Bar & Sort By Dropdown Styles === */
-.search-contain {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 20px;
-}
-.search-icon-input {
-  position: relative;
-  width: 250px;
-}
-.search-icon {
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #999;
-}
-.search-box {
-  padding-left: 30px;
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 14px;
-  outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-.search-box:focus {
-  border-color: #004aad;
-  box-shadow: 0 0 5px rgba(0, 74, 173, 0.4);
-}
-#sortByStatus {
-  width: 180px;
-  padding: 8px 12px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  background-color: #f9f9f9;
-  color: #333;
-  outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-#sortByStatus:focus {
-  border-color: #004aad;
-  box-shadow: 0 0 5px rgba(0, 74, 173, 0.5);
-}
+      .search-icon-input {
+        position: relative;
+        width: 250px;
+      }
+      .search-icon {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #999;
+      }
+      .search-box {
+        /* padding-left: -300px; */
+        width: fit-content;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 14px;
+        outline: none;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+      .search-box:focus {
+        border-color: #004aad;
+        box-shadow: 0 0 5px rgba(0, 74, 173, 0.4);
+      }
+
+      .search-bar {
+        /* border: 2px solid red; */
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+      }
+      #sortByStatus {
+        width: 180px;
+        padding: 8px 12px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        background-color: #f9f9f9;
+        color: #333;
+        outline: none;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+      #sortByStatus:focus {
+        border-color: #004aad;
+        box-shadow: 0 0 5px rgba(0, 74, 173, 0.5);
+      }
 
       table {
         width: 100%;
@@ -249,9 +310,25 @@
         margin-top: 20px;
       }
 
+      #tableContainer th {
+        text-align: left; /* Left-align text */
+        color: #666; /* Grey text (adjust hex as needed) */
+        background-color: white; /* White background */
+        padding: 8px 12px; /* Internal spacing */
+        /* font-weight: normal;  */
+      }
+
+      .active-employees{
+        /* border:2px solid #d11e1e; */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        padding: 15px;
+        padding-top: 5;
+        border-radius: 30px;
+      }
+
       th {
         padding: 12px;
-        border-bottom: 2px solid #ccc;
+        border-bottom: 2px solid white;
         background-color: #f5f5f5;
         position: sticky;
         top: 0;
@@ -277,7 +354,7 @@
       .pagination button {
         padding: 8px 16px;
         font-size: 14px;
-        font-weight: bold;
+        /* font-weight: bold; */
         cursor: pointer;
         transition: transform 0.2s;
         border-radius: 10px;
@@ -295,6 +372,25 @@
         border-color: #d11e1e;
         color: black;
       }
+            .edit-row-btn {
+  background-color: #a2b4d6;
+  border: 2px solid #204a87;
+  color: #000000;
+  border-radius: 10px;
+  padding: 12px 24px;
+  /* font-weight: bold; */
+  cursor: pointer;
+}
+
+.delete-row-btn {
+  background-color: #f19999;
+  border: 2px solid #d11e1e;
+  color: #000000;
+  border-radius: 10px;
+  padding: 12px 24px;
+  /* font-weight: bold; */
+  cursor: pointer;
+}
 
       .add-employee-button {
         display: flex;
@@ -319,7 +415,7 @@
       }
 
       .add-employee-button button:hover {
-        background-color: #3367D6;
+        background-color: #3367d6;
         transform: translateY(-1px);
       }
 
@@ -330,23 +426,55 @@
         font-size: 14px;
         color: #666;
       }
-      /* Add this to your style section */
-body > ul.nav-menu.bottom-menu, 
-body > #logoutButton {
-    display: none !important;
-}
+
+      body > ul.nav-menu.bottom-menu,
+      body > #logoutButton {
+        display: none !important;
+      }
+
+      /* responsiveness */
+
+
+      /* tablet */
+      @media(max-width:768px){
+        .active-employees{
+          width: 690px;
+        }
+      }
+
+      /* mobile */
+      @media(max-width:480px){
+        .active-employees{
+          width: 550px;
+        }
+
+
+        td:nth-child(2),
+            td:nth-child(3),
+            td:nth-child(4)
+            /* td:nth-child(5) */
+             {
+                display: none;
+            }
+
+             th:nth-child(2),
+             th:nth-child(3),
+  th:nth-child(4) {
+    display: none;
+  }
+
+      }
+
+
     </style>
   </head>
 
   <body>
-    <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
-      <!-- Sidebar Header -->
       <div class="sidebar-header">
-        <img src="https://github.com/luthandodake10111/iliso--frontend-images-/raw/main/iliso%20logo.png"  alt="Logo" />
+        <img src="https://github.com/luthandodake10111/iliso--frontend-images-/raw/main/iliso%20logo.png" alt="Logo" />
       </div>
 
-      <!-- Top Menu -->
       <ul class="nav-menu top-menu" id="topMenu">
         <li class="nav-link" id="addminButton"><i class="bx bx-user"></i><span>Dashboard</span></li>
         <ul class="nav-menu top-menu" id="topMenu">
@@ -354,31 +482,30 @@ body > #logoutButton {
         </ul>
       </ul>
 
-      <!-- Profile Section -->
-      <div style="flex-grow: 1;"></div>
-      <div style="margin-top: auto; padding: 20px 0; border-top: 1px solid #e0e0e0;">
-        <div style="display: flex; align-items: center; gap: 10px; padding: 10px;">
-          <img src="https://github.com/luthandodake10111/iliso--frontend-images-/raw/main/tara%20logo.png"  alt="Profile" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;" />
-          <span style="font-weight: 500;">Tara Snell</span>
+      <div style="flex-grow: 1"></div>
+      <div style="margin-top: auto; padding: 20px 0; border-top: 1px solid #e0e0e0">
+        <div style="display: flex; align-items: center; gap: 10px; padding: 10px">
+          <img
+            src="https://github.com/luthandodake10111/iliso--frontend-images-/raw/main/tara%20logo.png"
+            alt="Profile"
+            style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover"
+          />
+          <span style="font-weight: 500">Tara Snell</span>
         </div>
 
-        <!-- Logout Button -->
         <ul class="nav-menu bottom-menu" id="sidebarLogout">
-          <li class="nav-link" id="logoutButton" style="padding: 10px; display: flex; align-items: center; gap: 10px;">
+          <li class="nav-link" id="logoutButton" style="padding: 10px; display: flex; align-items: center; gap: 10px">
             <i class="bx bx-log-out"></i><span>Log-Out</span>
           </li>
         </ul>
       </div>
     </aside>
 
-    <!-- Main Content -->
     <div class="main-board">
-      <div class="welcome-msg"><h2>Welcome Tara 👋🏻</h2></div>
+      <div class="welcome-msg"><h2>Employee information</h2></div>
 
-      <!-- Search & Table -->
       <section class="active-employees">
         <div class="search-contain">
-          <h3>All Employees</h3>
           <div class="search-bar">
             <div class="search-icon-input">
               <i class="bx bx-search-alt search-icon"></i>
@@ -392,7 +519,7 @@ body > #logoutButton {
           </div>
         </div>
 
-        <!-- Employee Table -->
+        <h3>All Employees</h3>
         <div id="tableContainer">
           <table>
             <thead>
@@ -401,30 +528,39 @@ body > #logoutButton {
                 <th>Department</th>
                 <th>Email</th>
                 <th>Employee ID</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody id="employeeTableBody"></tbody>
           </table>
         </div>
 
-        <!-- Pagination -->
-        <div class="pagination" id="pagination"></div>
 
-        <!-- Add Employee Button -->
-        <div class="add-employee-button">
+
+
+     
+
+        <!-- 🧭 Page-turning wizardry -->
+  <div class="pagination" id="pagination">
+    <span id="dataInfo">Showing data 1 to 8 of 256K entries</span>
+    <nav id="paginationNav">
+      <a href="#" id="prevPage" class="nav-link">Previous</a>
+      <span id="pageLinks"></span>
+      <a href="#" id="nextPage" class="nav-link">Next</a>
+    </nav>
+  </div>
+ </section>
+
+         <div class="add-employee-button">
           <button id="employeeButton" class="nav-link">
             <i class="bx bx-user-plus"></i><span>Add New Employee</span>
           </button>
         </div>
-      </section>
-
-      <!-- Footer -->
       <footer>
         <div class="footer-slogan" id="updatePagination">Powered By ILISO</div>
       </footer>
     </div>
 
-    <!-- Modals -->
     <div class="modal-overlay" id="logoutModal">
       <div class="logout-modal">
         <p>⚠️ Are you sure you want to log out?</p>
@@ -440,12 +576,13 @@ body > #logoutButton {
         <span class="close-btn" onclick="document.getElementById('employeeModal').style.display='none'">&times;</span>
         <h2>Add Employee</h2>
         <form id="employee-form" onsubmit="return false;">
+          <input type="hidden" id="employeeIndex" />
           <input type="text" placeholder="Employee Name" id="employeeName" required />
           <select name="Dept" id="empDept" required>
             <option value="" selected disabled>Select Department</option>
-            <option value="hr">Solar</option>
+            <option value="solar">Solar</option>
             <option value="sales-force">Sales Force</option>
-            <option value="Academy">LC Academy</option>
+            <option value="academy">LC Academy</option>
             <option value="lc-studio">LC Studio</option>
           </select>
           <input type="email" placeholder="Email" id="email" autocomplete="email" required />
@@ -453,284 +590,309 @@ body > #logoutButton {
 
           <div class="form-buttons">
             <button id="submitemployee" type="submit">Submit</button>
-            <button id="cancelemployee" type="button" onclick="document.getElementById('employeeModal').style.display='none'">Cancel</button>
+            <button id="cancelemployee" type="button" onclick="document.getElementById('employeeModal').style.display='none'">
+              Cancel
+            </button>
           </div>
         </form>
       </div>
     </div>
 
-    <!-- JavaScript -->
     <script>
-       // ====== Existing Code: Do Not Touch ======
-  document.getElementById("addminButton").addEventListener("click", function () {
-    window.location.href = "dashboard.html";
-  });
+      // ====== Existing Code: Do Not Touch ======
+      document.getElementById("addminButton").addEventListener("click", function () {
+        window.location.href = "dashboard.html";
+      });
 
-  document.getElementById("viewadmin").addEventListener("click", function () {
-    window.location.href = "Admin.html";
-  });
+      document.getElementById("viewadmin").addEventListener("click", function () {
+        window.location.href = "Admin.html";
+      });
 
+      const logoutText = document.createElement("span");
+      logoutText.textContent = "Log-Out";
 
-  const logoutText = document.createElement('span');
-  logoutText.textContent = 'Log-Out';
+      sidebarLogout.appendChild(logoutButton);
 
+      const modalOverlay = document.createElement("div");
+      modalOverlay.className = "modal-overlay";
+      modalOverlay.id = "logoutModal";
+      modalOverlay.style.display = "none";
 
-  sidebarLogout.appendChild(logoutButton);
+      const logoutModal = document.createElement("div");
+      logoutModal.className = "logout-modal";
 
-  const modalOverlay = document.createElement('div');
-  modalOverlay.className = 'modal-overlay';
-  modalOverlay.id = 'logoutModal';
-  modalOverlay.style.display = 'none';
+      const warningText = document.createElement("p");
+      warningText.textContent = "⚠️ Are you sure you want to log out?";
 
-  const logoutModal = document.createElement('div');
-  logoutModal.className = 'logout-modal';
+      const buttonGroup = document.createElement("div");
+      buttonGroup.className = "button-group";
 
-  const warningText = document.createElement('p');
-  warningText.textContent = '⚠️ Are you sure you want to log out?';
+      const confirmButton = document.createElement("button");
+      confirmButton.id = "confirmLogoutBtn";
+      confirmButton.textContent = "Yes, log me out";
 
-  const buttonGroup = document.createElement('div');
-  buttonGroup.className = 'button-group';
+      const cancelButton = document.createElement("button");
+      cancelButton.id = "cancelLogoutBtn";
+      cancelButton.textContent = "Cancel";
 
-  const confirmButton = document.createElement('button');
-  confirmButton.id = 'confirmLogoutBtn';
-  confirmButton.textContent = 'Yes, log me out';
+      buttonGroup.appendChild(confirmButton);
+      buttonGroup.appendChild(cancelButton);
 
-  const cancelButton = document.createElement('button');
-  cancelButton.id = 'cancelLogoutBtn';
-  cancelButton.textContent = 'Cancel';
+      logoutModal.appendChild(warningText);
+      logoutModal.appendChild(buttonGroup);
+      modalOverlay.appendChild(logoutModal);
 
-  buttonGroup.appendChild(confirmButton);
-  buttonGroup.appendChild(cancelButton);
+      document.body.appendChild(modalOverlay);
 
-  logoutModal.appendChild(warningText);
-  logoutModal.appendChild(buttonGroup);
-  modalOverlay.appendChild(logoutModal);
+      document.getElementById("logoutButton").addEventListener("click", function () {
+        document.getElementById("logoutModal").style.display = "block";
+      });
 
+      document.getElementById("cancelLogoutBtn").addEventListener("click", function () {
+        document.getElementById("logoutModal").style.display = "none";
+      });
 
-  document.body.appendChild(modalOverlay);
+      document.getElementById("confirmLogoutBtn").addEventListener("click", function () {
+        window.location.href = "Login.html";
+      });
+      // ====== End of Unchanged Section ======
 
-  document.getElementById('logoutButton').addEventListener('click', function() {
-    document.getElementById('logoutModal').style.display = 'block';
-  });
+      // ====== DUMMY EMPLOYEE DATA ======
+      const dummyEmployees = [
+        { id: 1, name: "Sibongile Nkosi", department: "Solar", email: "sibongile.nkosi@lifechoices.co.za", empId: "EMP001" },
+        { id: 2, name: "Lungile Moyo", department: "Solar", email: "lungile.moyo@lifechoices.co.za", empId: "EMP002" },
+        { id: 3, name: "Thabo Molefe", department: "Sales Force", email: "thabo.molefe@lifechoices.co.za", empId: "EMP003" },
+        { id: 4, name: "Keshav Naidoo", department: "LC Academy", email: "keshav.naidoo@lifechoices.co.za", empId: "EMP004" },
+        { id: 5, name: "Zanele Khumalo", department: "LC Academy", email: "zanele.khumalo@lifechoices.co.za", empId: "EMP005" },
+        { id: 6, name: "Sipho Zulu", department: "LC Academy", email: "sipho.zulu@lifechoices.co.za", empId: "EMP006" },
+        { id: 7, name: "Naledi Moeketsi", department: "Sales Force", email: "naledi.moeketsi@lifechoices.co.za", empId: "EMP007" },
+        { id: 8, name: "Farai Gumbo", department: "Sales Force", email: "farai.gumbo@lifechoices.co.za", empId: "EMP008" },
+        { id: 9, name: "Karabo Dlamini", department: "LC Studio", email: "karabo.dlamini@lifechoices.co.za", empId: "EMP009" },
+        { id: 10, name: "Fatima Patel", department: "LC Studio", email: "fatima.patel@lifechoices.co.za", empId: "EMP010" },
+      ];
 
-  document.getElementById('cancelLogoutBtn').addEventListener('click', function() {
-    document.getElementById('logoutModal').style.display = 'none';
-  });
+      let currentPage = 1;
+      const rowsPerPage = 5;
+      let selectedEmployeeId = null; // To store the ID of the employee being edited/deleted
 
-  document.getElementById('confirmLogoutBtn').addEventListener('click', function() {
-    window.location.href = 'Login.html';
-  });
-  // ====== End of Unchanged Section ======
+      function renderTable(data, page) {
+        const tbody = document.getElementById("employeeTableBody");
+        tbody.innerHTML = "";
+        const start = (page - 1) * rowsPerPage;
+        const end = start + rowsPerPage;
+        const paginatedData = data.slice(start, end);
 
-  // ====== DUMMY EMPLOYEE DATA ======
-  const dummyEmployees = [
-    { id: 1, name: "Sibongile Nkosi", department: "Development", email: "sibongile.nkosi@moderntech.com", empId: "EMP001" },
-    { id: 2, name: "Lungile Moyo", department: "HR", email: "lungile.moyo@moderntech.com", empId: "EMP002" },
-    { id: 3, name: "Thabo Molefe", department: "QA", email: "thabo.molefe@moderntech.com", empId: "EMP003" },
-    { id: 4, name: "Keshav Naidoo", department: "Sales", email: "keshav.naidoo@moderntech.com", empId: "EMP004" },
-    { id: 5, name: "Zanele Khumalo", department: "Marketing", email: "zanele.khumalo@moderntech.com", empId: "EMP005" },
-    { id: 6, name: "Sipho Zulu", department: "Design", email: "sipho.zulu@moderntech.com", empId: "EMP006" },
-    { id: 7, name: "Naledi Moeketsi", department: "IT", email: "naledi.moeketsi@moderntech.com", empId: "EMP007" },
-    { id: 8, name: "Farai Gumbo", department: "Marketing", email: "farai.gumbo@moderntech.com", empId: "EMP008" },
-    { id: 9, name: "Karabo Dlamini", department: "Finance", email: "karabo.dlamini@moderntech.com", empId: "EMP009" },
-    { id: 10, name: "Fatima Patel", department: "Support", email: "fatima.patel@moderntech.com", empId: "EMP010" }
-  ];
+        paginatedData.forEach((emp) => {
+          const row = document.createElement("tr");
+          row.dataset.empid = emp.empId; // Use data-empid for unique identification
+          row.innerHTML = `
+            <td>${emp.name}</td>
+            <td>${emp.department}</td>
+            <td>${emp.email}</td>
+            <td>${emp.empId}</td>
+            <td>
+              <button class="edit-row-btn" data-empid="${emp.empId}">Edit</button>
+              <button class="delete-row-btn" data-empid="${emp.empId}">Delete</button>
+            </td>
+          `;
+          tbody.appendChild(row);
+        });
 
-  let currentPage = 1;
-  const rowsPerPage = 7;
-  let selectedRow = null;
+        // Attach event listeners to the new buttons
+        attachRowButtonListeners();
+        updatePagination(data.length, page);
+      }
 
-  function selectRow(row) {
-    if (selectedRow) selectedRow.classList.remove('selected');
-    selectedRow = row;
-    row.classList.add('selected');
-  }
+      function attachRowButtonListeners() {
+        document.querySelectorAll(".edit-row-btn").forEach((button) => {
+          button.onclick = (event) => handleEdit(event.target.dataset.empid);
+        });
 
-  function renderTable(data, page) {
-    const tbody = document.getElementById('employeeTableBody');
-    tbody.innerHTML = '';
-    const start = (page - 1) * rowsPerPage;
-    const end = start + rowsPerPage;
-    const paginatedData = data.slice(start, end);
+        document.querySelectorAll(".delete-row-btn").forEach((button) => {
+          button.onclick = (event) => handleDelete(event.target.dataset.empid);
+        });
+      }
 
-    paginatedData.forEach(emp => {
-      const row = document.createElement('tr');
-      row.dataset.id = emp.id;
-      row.innerHTML = `
-        <td>${emp.name}</td>
-        <td>${emp.department}</td>
-        <td>${emp.email}</td>
-        <td>${emp.empId}</td>
-      `;
-      row.addEventListener('click', () => selectRow(row));
-      tbody.appendChild(row);
-    });
+      function updatePagination(total) {
+  const pagination = document.getElementById("paginationNav");
+  pagination.innerHTML = "";
 
-    updatePagination(data.length, page);
-  }
+  const totalPages = Math.ceil(total / rowsPerPage);
 
-  function updatePagination(totalItems, currentPage) {
-    const totalPages = Math.ceil(totalItems / rowsPerPage);
-    const paginationDiv = document.querySelector('.pagination');
-    paginationDiv.innerHTML = '';
-
-    const editBtn = document.createElement('button');
-    editBtn.textContent = 'EDIT';
-    editBtn.style.backgroundColor = '#a2b4d6';
-    editBtn.style.border = '2px solid #204a87';
-    editBtn.style.color = '#000000';
-    editBtn.style.borderRadius = '10px';
-    editBtn.style.padding = '12px 24px';
-    editBtn.style.fontWeight = 'bold';
-    editBtn.style.cursor = 'pointer';
-    editBtn.onclick = handleEdit;
-    paginationDiv.appendChild(editBtn);
-
-    const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = 'DELETE';
-    deleteBtn.style.backgroundColor = '#f19999';
-    deleteBtn.style.border = '2px solid #d11e1e';
-    deleteBtn.style.color = '#000000';
-    deleteBtn.style.borderRadius = '10px';
-    deleteBtn.style.padding = '12px 24px';
-    deleteBtn.style.fontWeight = 'bold';
-    deleteBtn.style.cursor = 'pointer';
-    deleteBtn.onclick = handleDelete;
-    paginationDiv.appendChild(deleteBtn);
-
-    for (let i = 1; i <= totalPages; i++) {
-      const btn = document.createElement('button');
-      btn.textContent = i;
-      btn.className = 'page-btn';
-      if (i === currentPage) btn.style.backgroundColor = '#a2b4d6';
-      btn.onclick = () => {
-        currentPage = i;
-        renderTable(dummyEmployees, currentPage);
-      };
-      paginationDiv.appendChild(btn);
-    }
-  }
-
-  function handleEdit() {
-    if (!selectedRow) {
-      alert("Please select a row to edit.");
-      return;
-    }
-
-    const id = selectedRow.cells[3].textContent;
-    const emp = dummyEmployees.find(e => e.empId === id);
-    if (!emp) return;
-
-    document.getElementById('employeeName').value = emp.name;
-    document.getElementById('empDept').value = emp.department.toLowerCase();
-    document.getElementById('email').value = emp.email;
-    document.getElementById('employeeId').value = emp.empId;
-
-    document.getElementById('employeeModal').style.display = 'block';
-
-    const index = dummyEmployees.findIndex(e => e.empId === id);
-    if (index > -1) dummyEmployees.splice(index, 1);
-  }
-
-  function handleDelete() {
-    if (!selectedRow) {
-      alert("Please select a row to delete.");
-      return;
-    }
-
-    const confirmDelete = confirm("Are you sure you want to delete this employee?");
-    if (!confirmDelete) return;
-
-    const id = selectedRow.cells[3].textContent;
-    const index = dummyEmployees.findIndex(e => e.empId === id);
-    if (index > -1) {
-      dummyEmployees.splice(index, 1);
-      selectedRow.remove();
-      selectedRow = null;
+  // Previous Button
+  const prev = document.createElement("a");
+  prev.textContent = "Previous";
+  prev.href = "#";
+  prev.className = currentPage === 1 ? "disabled" : "";
+  prev.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (currentPage > 1) {
+      currentPage--;
       renderTable(dummyEmployees, currentPage);
     }
-  }
+  });
+  pagination.appendChild(prev);
 
-  // Handle Add New Employee
-document.addEventListener('DOMContentLoaded', function () {
-  // === Ensure the "Add New Employee" button works ===
-  const employeeButton = document.getElementById("employeeButton");
-  if (employeeButton) {
-    employeeButton.addEventListener("click", function () {
-      document.getElementById('employeeModal').style.display = 'block';
-      document.getElementById('employee-form').reset();
-    });
-  } else {
-    console.warn("Employee button not found!");
-  }
-
-  // === Submit handler for adding new employee ===
-  const form = document.getElementById('employee-form');
-  if (form) {
-    form.addEventListener('submit', function(e) {
+  // Page Numbers
+  for (let i = 1; i <= totalPages; i++) {
+    const page = document.createElement("a");
+    page.textContent = i;
+    page.href = "#";
+    page.className = i === currentPage ? "active" : "";
+    page.addEventListener("click", (e) => {
       e.preventDefault();
-
-      const name = document.getElementById('employeeName').value.trim();
-      const dept = document.getElementById('empDept').value;
-      const email = document.getElementById('email').value.trim();
-      const id = document.getElementById('employeeId').value.trim();
-
-      if (!name || !dept || !email || !id) {
-        alert("Please fill in all fields.");
-        return;
-      }
-
-      // Prevent duplicate empId
-      const exists = dummyEmployees.some(emp => emp.empId === id);
-      if (exists) {
-        alert("Employee with this ID already exists.");
-        return;
-      }
-
-      const newEmp = {
-        id: dummyEmployees.length + 1,
-        name,
-        department: dept.charAt(0).toUpperCase() + dept.slice(1),
-        email,
-        empId: id
-      };
-
-      dummyEmployees.push(newEmp);
-      currentPage = Math.ceil(dummyEmployees.length / rowsPerPage);
+      currentPage = i;
       renderTable(dummyEmployees, currentPage);
-      document.getElementById('employeeModal').style.display = 'none';
-      this.reset(); // Reset the form
     });
+    pagination.appendChild(page);
   }
 
-  // === Search functionality ===
-  const searchBox = document.getElementById("searchBox");
-  if (searchBox) {
-    searchBox.addEventListener('input', function () {
-      const searchTerm = this.value.toLowerCase();
-      const filtered = dummyEmployees.filter(emp =>
-        emp.name.toLowerCase().includes(searchTerm) ||
-        emp.empId.toLowerCase().includes(searchTerm)
-      );
-      renderTable(filtered, 1); // Always reset to page 1 on filter
-    });
-  }
-  
-  // === Initialize Table ===
-  renderTable(dummyEmployees, currentPage);
-
-  // Attach click event to each row
-  document.getElementById('employeeTableBody').addEventListener('click', function(e) {
-    if (e.target.tagName === 'TD') {
-      selectRow(e.target.parentNode);
+  // Next Button
+  const next = document.createElement("a");
+  next.textContent = "Next";
+  next.href = "#";
+  next.className = currentPage === totalPages ? "disabled" : "";
+  next.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (currentPage < totalPages) {
+      currentPage++;
+      renderTable(dummyEmployees, currentPage);
     }
   });
-});
-// Add this at the end of your JavaScript
-document.addEventListener('DOMContentLoaded', function() {
-    const rogueLogoutButtons = document.querySelectorAll('body > ul.nav-menu.bottom-menu, body > #logoutButton');
-    rogueLogoutButtons.forEach(button => button.remove());
-});
+  pagination.appendChild(next);
+}
+
+   function handleEdit(empId) {
+        const emp = dummyEmployees.find((e) => e.empId === empId);
+        if (!emp) return;
+
+        // Populate the modal with the employee's current data
+        document.getElementById("employeeName").value = emp.name;
+        document.getElementById("empDept").value = emp.department.toLowerCase();
+        document.getElementById("email").value = emp.email;
+        document.getElementById("employeeId").value = emp.empId;
+        document.getElementById("employeeIndex").value = dummyEmployees.findIndex((e) => e.empId === empId); // Store index for update
+
+        document.getElementById("employeeModal").style.display = "block";
+        document.querySelector("#employeeModal h2").textContent = "Edit Employee"; // Change modal title
+      }
+
+      function handleDelete(empId) {
+        const confirmDelete = confirm("Are you sure you want to delete this employee?");
+        if (!confirmDelete) return;
+
+        const index = dummyEmployees.findIndex((e) => e.empId === empId);
+        if (index > -1) {
+          dummyEmployees.splice(index, 1);
+          renderTable(dummyEmployees, currentPage); // Re-render the table after deletion
+        }
+      }
+
+      // Handle Add New Employee / Update Existing Employee
+      document.addEventListener("DOMContentLoaded", function () {
+        // === Ensure the "Add New Employee" button works ===
+        const employeeButton = document.getElementById("employeeButton");
+        if (employeeButton) {
+          employeeButton.addEventListener("click", function () {
+            document.getElementById("employeeModal").style.display = "block";
+            document.getElementById("employee-form").reset(); // Clear form for new entry
+            document.getElementById("employeeIndex").value = ""; // Clear index for new entry
+            document.getElementById("employeeId").readOnly = false; // Employee ID is editable for new entries
+            document.querySelector("#employeeModal h2").textContent = "Add Employee"; // Set modal title back
+          });
+        } else {
+          console.warn("Employee button not found!");
+        }
+
+        // === Submit handler for adding new or updating employee ===
+        const form = document.getElementById("employee-form");
+        if (form) {
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById("employeeName").value.trim();
+            const dept = document.getElementById("empDept").value;
+            const email = document.getElementById("email").value.trim();
+            const id = document.getElementById("employeeId").value.trim();
+            const employeeIndex = document.getElementById("employeeIndex").value; // Get the stored index
+
+            if (!name || !dept || !email || !id) {
+              alert("Please fill in all fields.");
+              return;
+            }
+
+            if (employeeIndex !== "") {
+              // Existing employee: Update
+              const index = parseInt(employeeIndex);
+              dummyEmployees[index] = {
+                ...dummyEmployees[index], // Keep existing properties not in form
+                name: name,
+                department: dept.charAt(0).toUpperCase() + dept.slice(1),
+                email: email,
+                empId: id, // EmpID might change if allowed by user
+              };
+            } else {
+              // New employee: Add
+              // Prevent duplicate empId
+              const exists = dummyEmployees.some((emp) => emp.empId === id);
+              if (exists) {
+                alert("Employee with this ID already exists.");
+                return;
+              }
+
+              const newEmp = {
+                id: dummyEmployees.length + 1, // Simple incremental ID, consider better unique ID generation
+                name,
+                department: dept.charAt(0).toUpperCase() + dept.slice(1),
+                email,
+                empId: id,
+              };
+              dummyEmployees.push(newEmp);
+            }
+
+            currentPage = Math.ceil(dummyEmployees.length / rowsPerPage);
+            renderTable(dummyEmployees, currentPage);
+            document.getElementById("employeeModal").style.display = "none";
+            this.reset(); // Reset the form
+          });
+        }
+
+        // === Search functionality ===
+        const searchBox = document.getElementById("searchBox");
+        if (searchBox) {
+          searchBox.addEventListener("input", function () {
+            const searchTerm = this.value.toLowerCase();
+            const filtered = dummyEmployees.filter(
+              (emp) => emp.name.toLowerCase().includes(searchTerm) || emp.empId.toLowerCase().includes(searchTerm)
+            );
+            renderTable(filtered, 1); // Always reset to page 1 on filter
+          });
+        }
+
+        // === Sort by Status (Newest/Oldest) ===
+        const sortByStatus = document.getElementById("sortByStatus");
+        if (sortByStatus) {
+          sortByStatus.addEventListener("change", function () {
+            let sortedEmployees = [...dummyEmployees]; // Create a copy to sort
+
+            if (this.value === "On Site") {
+              // Sort by Newest (assuming higher ID means newer, or you can add a 'dateAdded' property)
+              sortedEmployees.sort((a, b) => b.id - a.id);
+            } else if (this.value === "Off Site") {
+              // Sort by Oldest (assuming lower ID means older)
+              sortedEmployees.sort((a, b) => a.id - b.id);
+            }
+            // 'all' value is already handled by simply rendering the unsorted dummyEmployees
+            renderTable(sortedEmployees, 1);
+          });
+        }
+
+        // === Initialize Table ===
+        renderTable(dummyEmployees, currentPage);
+
+        // Remove the rogue logout buttons (from your original code)
+        document.querySelectorAll("body > ul.nav-menu.bottom-menu, body > #logoutButton").forEach((button) => button.remove());
+      });
     </script>
   </body>
 </html>
