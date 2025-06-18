@@ -149,18 +149,20 @@
         }
 
         /* Modal overlay for pop-ups */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-        }
+         .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        backdrop-filter: blur(4px);
+      }
+
 
         /* General modal content styles */
         .modal-content {
@@ -217,16 +219,22 @@
             cursor: pointer;
             transition: all 0.3s ease;
             overflow: hidden;
-            background-color: transparent; /* Always transparent for the button itself */
-        }
+            /* background-color: transparent; Always transparent for the button itself */
+        }.panic-button.off {
+        background-color: transparent; /* No background color when off */
+      }
+
+      .panic-button.on {
+        background-color: transparent; /* No background color when off */
+      }
 
         /* Toggle switch within panic button */
         .panic-button .toggle-switch {
             position: relative;
-            width: 50px;
-            height: 28px;
-            border-radius: 20px;
-            background-color: lightgray; /* Gray when off */
+             width: 30px;
+             height: 18px;
+            border-radius: 10px;
+            background-color: #918f8f; /* Gray when off */
             transition: background-color 0.3s ease;
         }
 
@@ -237,10 +245,10 @@
         .panic-button .toggle-switch::before {
             content: "";
             position: absolute;
-            top: 3px;
-            left: 3px;
-            width: 24px;
-            height: 24px;
+            top: 2px;
+            left: 2px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             background-color: #fff; /* White circle within the buttons */
             transition: transform 0.3s ease;
@@ -262,7 +270,34 @@
             align-items: center;
             justify-content: center;
             z-index: 9999;
+             backdrop-filter: blur(4px);
         }
+
+        .modal-content {
+        background: #f8f9fb;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        width: 400px;
+        max-width: 90%;
+        padding: 2rem 2.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        font-family: "Inter", "Open Sans", sans-serif;
+      }
+
+      .modal-content h2 {
+        margin: 0 0 1rem 0;
+        font-weight: 700;
+        color: #0f4392;
+        text-align: center;
+      }
+
+      .modal-content p {
+        text-align: center;
+        font-size: 16px;
+        color: #333;
+      }
 
         /* Warning section within panic modal */
         .warning-section {
@@ -291,6 +326,32 @@
             margin: 0;
             flex-grow: 1;
         }
+
+        /* Buttons Group */
+      .button-group {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .button-group button {
+        flex: 1;
+        padding: 0.75rem 1.2rem;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 48px;
+        font-family: "Inter", "Open Sans", sans-serif;
+        transition: none; /* No hover effects */
+      }
+
+      
 
         /* Logout button styles */
         .logout-btn {
@@ -326,6 +387,19 @@
             margin-bottom: 1rem;
             font-weight: bold;
         }
+         .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+         backdrop-filter: blur(4px);
+      }
 
         #confirmLogoutBtn {
             background-color: #ea1c1f;
@@ -419,6 +493,7 @@
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s, visibility 0.3s;
+            
         }
 
         .overlay.open {
@@ -963,15 +1038,16 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </div>
 
-      <div class="modal-overlay" id="logoutModal" style="display: none">
-        <div class="logout-modal">
-          <p>⚠️ Are you sure you want to log out?</p>
-          <div class="button-group">
-            <button id="confirmLogoutBtn">Yes, log me out</button>
-            <button id="cancelLogoutBtn">Cancel</button>
+       <div class="modal-overlay" id="logoutModal" style="display: none">
+          <div class="logout-modal">
+            <p>⚠️ Are you sure you want to log out?</p>
+            <div class="button-group">
+              <button id="confirmLogoutBtn">Yes, log me out</button>
+              <button id="cancelLogoutBtn">Cancel</button>
+            </div>
           </div>
         </div>
-      </div>
+
 
       <button class="logout-btn" id="logoutButton">
         LOGOUT
